@@ -192,6 +192,11 @@
                 <Property name="text" type="java.lang.String" value="Solicita Ayuda"/>
               </Properties>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="jMenu12">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ayuda"/>
+              </Properties>
+            </Menu>
           </SubComponents>
         </Menu>
       </SubComponents>

@@ -73,6 +73,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu10 = new javax.swing.JMenu();
         jMenu11 = new javax.swing.JMenu();
+        jMenu12 = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -253,6 +254,9 @@ public class Principal extends javax.swing.JFrame {
         jMenu11.setText("Solicita Ayuda");
         jMenu10.add(jMenu11);
 
+        jMenu12.setText("Ayuda");
+        jMenu10.add(jMenu12);
+
         jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
@@ -338,6 +342,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu11;
+    private javax.swing.JMenu jMenu12;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
