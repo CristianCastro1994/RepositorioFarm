@@ -5,6 +5,12 @@
  */
 package Presentacion;
 
+import javax.swing.JOptionPane;
+import Datos.DEmpleado;
+import Consultas.CEmpleado;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Richard
@@ -33,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTContraseña = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCBCargo = new javax.swing.JComboBox<>();
         jBCancelar = new javax.swing.JButton();
         jBIniciar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -57,14 +63,19 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Contraseña:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 150, -1));
+        jCBCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(jCBCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 140, 150, -1));
 
         jBCancelar.setText("Cancelar");
         jPanel1.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, -1, -1));
 
         jBIniciar.setText("Iniciar");
-        jPanel1.add(jBIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
+        jBIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBIniciarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 198, -1, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("ACCESO AL SISTEMA");
@@ -94,6 +105,32 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIniciarActionPerformed
+     if (jTUsuario.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar un Usuario");
+            jTUsuario.requestFocus();
+            return;
+        }
+
+        if (jTContraseña.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar una Contraseña");
+            jTContraseña.requestFocus();
+            return;
+        }
+        DEmpleado datos = new DEmpleado();
+        CEmpleado funcion = new CEmpleado();
+        
+        datos.setLogin(jTUsuario.getText());
+        datos.setPassword(jTContraseña.getText());
+        
+        try {
+            funcion.consultar(datos);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jBIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,7 +170,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBIniciar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCBCargo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
