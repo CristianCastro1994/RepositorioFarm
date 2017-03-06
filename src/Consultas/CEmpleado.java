@@ -8,6 +8,7 @@ package Consultas;
 
 import Conexion.Conexion;
 import Datos.DEmpleado;
+import Presentacion.Principal;
 import java.awt.HeadlessException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -31,13 +32,13 @@ public class CEmpleado {
     public Integer totalRegistros; // Obtener los registros
 
     
-    public void consultar(DEmpleado datos) throws SQLException{
-        
+    public boolean consultar(DEmpleado datos) {
+        int acceso;
         //En este conjunto de codigos lo que hago es llamar al procedimiento almacenado "RevisarUsuario" 
         //que se encuentra en la base de datos, el cual revisa si existe un usuario en la BD 
         //Si el procedimiento almacenado me devuelve 1 es porque existe y 0 es porque no. 
         try {
-            int acceso;
+            
            CallableStatement cs = cn.prepareCall("{call RevisarUsuario(?,?,?)}");
            cs.setString(1, datos.getLogin());
            cs.setString(2, datos.getPassword());
@@ -50,17 +51,22 @@ public class CEmpleado {
            acceso = cs.getInt(3);
            
             if (acceso == 1) {
-                JOptionPane.showMessageDialog(null, "Bienvenido "+ datos.getLogin());
+               
+                return true;
+                
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto");
+                
+                return false;
             }
            
            
-        } catch (HeadlessException | SQLException e) {
+        } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e);
+              return false;    
         }
          
-         
+  
     }
     
      public boolean insertar(DEmpleado datos) {
