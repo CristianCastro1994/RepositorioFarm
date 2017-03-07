@@ -8,15 +8,10 @@ package Consultas;
 
 import Conexion.Conexion;
 import Datos.DEmpleado;
-import Presentacion.Principal;
-import java.awt.HeadlessException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Types;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
