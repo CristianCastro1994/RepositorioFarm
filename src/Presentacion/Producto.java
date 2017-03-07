@@ -5,6 +5,11 @@
  */
 package Presentacion;
 
+import Datos.DProducto;
+import Consultas.CProducto;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Calendar;
 /**
  *
  * @author Richard
@@ -27,9 +32,6 @@ public class Producto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBModificar = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -45,28 +47,32 @@ public class Producto extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTIdProducto = new javax.swing.JTextField();
+        jTNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jTextField6 = new javax.swing.JTextField();
+        jTDescripcion = new javax.swing.JTextPane();
+        jTStock = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        jTPrecioCosto = new javax.swing.JTextField();
+        jTCodigoBarras = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jTextField12 = new javax.swing.JTextField();
+        jTStockMinimo = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        jTUtilidad = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCCategoria = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
-        jTextField14 = new javax.swing.JTextField();
+        jTPrecioVenta = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
+        jTSitio = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jCFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        jLabel11 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
@@ -78,15 +84,12 @@ public class Producto extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
+        jBModificar = new javax.swing.JButton();
+        jBCancelar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PRODUCTOS");
-
-        jBModificar.setText("Modificar");
-
-        jBSalir.setText("Salir");
-
-        jBCancelar.setText("Cancelar");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -142,21 +145,21 @@ public class Producto extends javax.swing.JFrame {
         jLabel2.setText("Nombre:");
         jPanel4.add(jLabel2);
         jLabel2.setBounds(28, 68, 48, 16);
-        jPanel4.add(jTextField2);
-        jTextField2.setBounds(105, 27, 117, 28);
-        jPanel4.add(jTextField3);
-        jTextField3.setBounds(105, 65, 370, 28);
+        jPanel4.add(jTIdProducto);
+        jTIdProducto.setBounds(105, 27, 117, 28);
+        jPanel4.add(jTNombre);
+        jTNombre.setBounds(105, 65, 370, 28);
 
         jLabel6.setText("Categoria");
         jPanel4.add(jLabel6);
         jLabel6.setBounds(20, 220, 70, 16);
 
-        jScrollPane1.setViewportView(jTextPane1);
+        jScrollPane1.setViewportView(jTDescripcion);
 
         jPanel4.add(jScrollPane1);
         jScrollPane1.setBounds(100, 120, 370, 59);
-        jPanel4.add(jTextField6);
-        jTextField6.setBounds(100, 260, 155, 28);
+        jPanel4.add(jTStock);
+        jTStock.setBounds(100, 260, 155, 28);
 
         jLabel7.setText("Stock:");
         jPanel4.add(jLabel7);
@@ -165,10 +168,10 @@ public class Producto extends javax.swing.JFrame {
         jLabel8.setText("Precio Costo:");
         jPanel4.add(jLabel8);
         jLabel8.setBounds(20, 310, 80, 16);
-        jPanel4.add(jTextField7);
-        jTextField7.setBounds(100, 300, 155, 28);
-        jPanel4.add(jTextField9);
-        jTextField9.setBounds(360, 30, 112, 28);
+        jPanel4.add(jTPrecioCosto);
+        jTPrecioCosto.setBounds(100, 300, 155, 28);
+        jPanel4.add(jTCodigoBarras);
+        jTCodigoBarras.setBounds(360, 30, 112, 28);
 
         jLabel10.setText("Codigo de Barras");
         jPanel4.add(jLabel10);
@@ -202,32 +205,48 @@ public class Producto extends javax.swing.JFrame {
 
         jPanel4.add(jPanel5);
         jPanel5.setBounds(260, 200, 210, 50);
-        jPanel4.add(jTextField12);
-        jTextField12.setBounds(370, 270, 100, 28);
+        jPanel4.add(jTStockMinimo);
+        jTStockMinimo.setBounds(370, 270, 100, 28);
 
         jLabel13.setText("Stock Minimo:");
         jPanel4.add(jLabel13);
         jLabel13.setBounds(280, 270, 90, 16);
-        jPanel4.add(jTextField13);
-        jTextField13.setBounds(370, 350, 100, 28);
+        jPanel4.add(jTUtilidad);
+        jTUtilidad.setBounds(370, 350, 100, 28);
 
         jLabel14.setText("Utilidad:");
         jPanel4.add(jLabel14);
         jLabel14.setBounds(280, 360, 80, 16);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HARDWARE", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox1);
-        jComboBox1.setBounds(100, 210, 140, 26);
+        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HARDWARE", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(jCCategoria);
+        jCCategoria.setBounds(100, 210, 140, 26);
 
         jLabel16.setText("Descripción:");
         jPanel4.add(jLabel16);
         jLabel16.setBounds(18, 120, 70, 16);
-        jPanel4.add(jTextField14);
-        jTextField14.setBounds(370, 310, 100, 28);
+        jPanel4.add(jTPrecioVenta);
+        jTPrecioVenta.setBounds(370, 310, 100, 28);
 
         jLabel17.setText("Precio Venta:");
         jPanel4.add(jLabel17);
         jLabel17.setBounds(280, 320, 80, 16);
+        jPanel4.add(jTSitio);
+        jTSitio.setBounds(100, 340, 155, 28);
+
+        jLabel9.setText("Fecha Vencimiento");
+        jPanel4.add(jLabel9);
+        jLabel9.setBounds(20, 380, 80, 16);
+
+        jCFechaVencimiento.setBackground(new java.awt.Color(36, 33, 33));
+        jCFechaVencimiento.setForeground(new java.awt.Color(207, 207, 207));
+        jCFechaVencimiento.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jPanel4.add(jCFechaVencimiento);
+        jCFechaVencimiento.setBounds(107, 370, 150, 28);
+
+        jLabel11.setText("Sitio:");
+        jPanel4.add(jLabel11);
+        jLabel11.setBounds(20, 350, 80, 16);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 410));
 
@@ -258,11 +277,27 @@ public class Producto extends javax.swing.JFrame {
 
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 220, 400));
 
-        jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
-
         jBNuevo.setText("Nuevo");
+        jPanel2.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 30, 70, -1));
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, -1, -1));
+
+        jBModificar.setText("Modificar");
+        jPanel2.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 80, -1));
+
+        jBCancelar.setText("Cancelar");
+        jPanel2.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, -1, -1));
+
+        jBSalir.setText("Salir");
+        jPanel2.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 70, -1));
+
+        jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -270,17 +305,8 @@ public class Producto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jTabbedPane4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBCancelar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,22 +314,34 @@ public class Producto extends javax.swing.JFrame {
                 .addGap(33, 33, 33)
                 .addComponent(jTabbedPane4)
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addComponent(jBNuevo)
-                .addGap(18, 18, 18)
-                .addComponent(jBGuardar)
-                .addGap(18, 18, 18)
-                .addComponent(jBModificar)
-                .addGap(18, 18, 18)
-                .addComponent(jBCancelar)
-                .addGap(23, 23, 23)
-                .addComponent(jBSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+    DProducto datos = new DProducto();
+    CProducto funcion = new CProducto();
+    
+    //Aca inicio la variable cal tipo calendario para poder obtener la fecha
+    Calendar cal;
+    int d,m,a;
+    cal = jCFechaVencimiento.getCalendar();
+    d = cal.get(Calendar.DAY_OF_MONTH);
+    m = cal.get(Calendar.MONTH);
+    a = cal.get(Calendar.YEAR);
+    //Hasta aca termina la obtencion de la fecha
+    
+    datos.setNombre(jTNombre.getText());
+    datos.setDescripcion(jTDescripcion.getText());
+    datos.setSitio(jTSitio.getText());
+    datos.setLimite(Double.valueOf(jTStockMinimo.getText()));
+    datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
+    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
+    datos.setVencimiento(new Date(d,m,a));
+    
+    
+    }//GEN-LAST:event_jBGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,10 +388,12 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCCategoria;
+    private com.toedter.calendar.JDateChooser jCFechaVencimiento;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
@@ -363,6 +403,7 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -378,19 +419,20 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTCodigoBarras;
+    private javax.swing.JTextPane jTDescripcion;
+    private javax.swing.JTextField jTIdProducto;
+    private javax.swing.JTextField jTNombre;
+    private javax.swing.JTextField jTPrecioCosto;
+    private javax.swing.JTextField jTPrecioVenta;
+    private javax.swing.JTextField jTSitio;
+    private javax.swing.JTextField jTStock;
+    private javax.swing.JTextField jTStockMinimo;
+    private javax.swing.JTextField jTUtilidad;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField9;
-    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }
