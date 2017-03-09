@@ -106,7 +106,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SISTEMA DE FARMACIA");
 
-        jBEmpleados.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\1488350886_people.png")); // NOI18N
+        jBEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1488350833_vault.png"))); // NOI18N
         jBEmpleados.setText("Empleados");
 
         jBClientes.setText("Clientes");
@@ -136,7 +136,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendar.png"))); // NOI18N
         jLabel4.setText("Fecha");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\dinero-icono-5388-32.png")); // NOI18N
         jLabel6.setText("Cotizacion");
 
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -170,22 +169,12 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\48\\Paraguay.png")); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\16\\United States of America.png")); // NOI18N
         jLabel10.setText("Dolar");
 
-        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\16\\Brazil.png")); // NOI18N
         jLabel11.setText("Real");
 
-        jLabel12.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\16\\Argentina.png")); // NOI18N
         jLabel12.setText("Peso");
-
-        jLabel13.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\48\\Argentina.png")); // NOI18N
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\48\\Brazil.png")); // NOI18N
-
-        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\flags\\48\\United States of America(USA).png")); // NOI18N
 
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -378,7 +367,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jLabel3.setText("Fecha:");
 
-        jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\PNG\\folder.png")); // NOI18N
         jMenu1.setText("Archivo");
 
         jMenu3.setText("Iniciar Sesión");
@@ -405,7 +393,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\PNG\\calc.png")); // NOI18N
         jMenu5.setText("Ventas");
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
@@ -422,7 +409,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\human_o2___iconset_by_schollidesign\\Human-O2\\32x32\\actions\\manilla-document-open.png")); // NOI18N
         jMenu6.setText("Consultas");
 
         jMenuItem5.setText("Ventas Realizadas");
@@ -442,7 +428,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\human_o2___iconset_by_schollidesign\\Human-O2\\32x32\\emblems\\emblem-work.png")); // NOI18N
         jMenu7.setText("Mantenimiento");
 
         jMenuItem10.setText("Empleado");
@@ -456,7 +441,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
-        jMenu8.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\human_o2___iconset_by_schollidesign\\Human-O2\\32x32\\emblems\\emblem-unreadable.png")); // NOI18N
         jMenu8.setText("Anulaciones");
 
         jMenuItem13.setText("Anular Venta");
@@ -467,7 +451,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu8);
 
-        jMenu9.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\human_o2___iconset_by_schollidesign\\configuracion-de-la-aplicacion-por-defecto-icono-6595-32.png")); // NOI18N
         jMenu9.setText("Herramientas");
 
         jMenuItem15.setText("Cambiar Contraseña");
@@ -484,7 +467,6 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu9);
 
-        jMenu10.setIcon(new javax.swing.ImageIcon("C:\\Users\\Sergio\\Downloads\\human_o2___iconset_by_schollidesign\\Human-O2\\32x32\\apps\\xfce-man.png")); // NOI18N
         jMenu10.setText("Ayuda");
 
         jMenu11.setText("Solicita Ayuda");
