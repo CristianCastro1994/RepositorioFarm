@@ -11,6 +11,7 @@ import Datos.DProducto;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -33,26 +34,23 @@ public class CProducto {
         //y este PA se encarga de guardarlos en la base de datos. 
         try {
             
-           CallableStatement cs = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?,?,?)}");
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
-           cs.setString(1, datos.getNombre());
+           CallableStatement cs = cn.prepareCall("{call InsertarProducto(?,?,?,?,?,?,?,?,?,?)}");
+           cs.setInt("_codigoMedicamentos", datos.getCodigo());
+           cs.setString("_nombre", datos.getNombre());
+           cs.setString("_descripcion", datos.getDescripcion());
+           cs.setString("_sitio", datos.getSitio());
+           cs.setDouble("_cantidad", 0);
+           cs.setDouble("_stock", 0);
+           cs.setDouble("_limite", datos.getLimite());
+           cs.setDouble("_precio", datos.getPrecio());
+           cs.setDouble("_precioCosto", datos.getPrecioCosto());
+           cs.setDate("_vencimiento", datos.getVencimiento());
+           
+           cs.execute();
+           return true;
            
            
-           if (cs.execute()) {
-                    return true;
-                } else {
-               return false;
-                }
-           
+            
            
         } catch (Exception e) {
            JOptionPane.showMessageDialog(null, e);
@@ -65,16 +63,15 @@ public class CProducto {
 
         DefaultTableModel modelo;
 
-        String[] titulos = {"COD", "Nombre", "Direccion","Telefono","Email","Cedula","Login","pass","Estado","Acceso"};
+        String[] titulos = {"Codigo", "Nombre", "Descripcion","Sitio","Stock","Limite","Precio","Vencimiento"};
 
         String[] registros = new String[10];
         totalRegistros = 0;
         modelo = new DefaultTableModel(null, titulos);
 
-        sSQL = "select p.cod_persona , p.nombre_persona , p.direccion,p.telefono , "
-                + "p.email,u.rut_usuario,u.login,u.password,u.estado ,u.acceso from "
-                + " persona p inner join usuario u on p.cod_persona = u.cod_usuario "
-                + " where nombre_persona like '%" + buscar + "%' order by cod_persona desc";
+        sSQL = "select CodigoMedicamentos , Nombre,  Descripcion , "
+                + " Sitio, Stock, Limite, Precio ,Vencimiento FROM medicamentos "
+                + " where CodigoMedicamentos like '%" + buscar +"%'";
 
         try {
 
@@ -83,17 +80,15 @@ public class CProducto {
 
             while (rs.next()) {
 
-                registros[0] = rs.getString("cod_persona");
-                registros[1] = rs.getString("nombre_persona");
-                registros[2] = rs.getString("direccion");
-                registros[3] = rs.getString("telefono");
-                registros[4] = rs.getString("email");
-                registros[5] = rs.getString("rut_usuario");
-                registros[6] = rs.getString("login");
-                registros[7] = rs.getString("password");
-                registros[8] = rs.getString("estado");
-                registros[9] = rs.getString("acceso");
-                totalRegistros = totalRegistros + 1;
+                registros[0] = rs.getString("CodigoMedicamentos");
+                registros[1] = rs.getString("Nombre");
+                registros[2] = rs.getString("Descripcion");
+                registros[3] = rs.getString("Sitio");
+                registros[4] = rs.getString("Stock");
+                registros[5] = rs.getString("Limite");
+                registros[6] = rs.getString("Precio");
+                registros[7] = rs.getString("Vencimiento");
+                                totalRegistros = totalRegistros + 1;
                 modelo.addRow(registros);
             }
             return modelo;

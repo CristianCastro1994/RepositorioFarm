@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author Richard
  */
 public class DProducto {
+    private int Codigo;
     private String Nombre;
     private String Descripcion;
     private String Sitio;
@@ -22,9 +23,10 @@ public class DProducto {
     private double PrecioCosto;
     private Date Vencimiento;
     
-    public DProducto(String Nombre, String Descripcion,
+    public DProducto(int Codigo, String Nombre, String Descripcion,
             String Sitio, double Cantidad, double Stock, double Limite,
             double Precio, double PrecioCosto, Date Vencimiento){
+        this.Codigo = Codigo;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
         this.Sitio = Sitio;
@@ -38,7 +40,14 @@ public class DProducto {
     }
 
     public DProducto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+    }
+    public int getCodigo(){
+        return Codigo;
+    }
+    
+    public void setCodigo(int Codigo){
+        this.Codigo = Codigo;
     }
     
      public String getNombre() {

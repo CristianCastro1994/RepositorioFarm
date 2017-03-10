@@ -147,7 +147,7 @@ public class Login extends javax.swing.JFrame {
 
         if (funcion.consultar(datos)) {
              JOptionPane.showMessageDialog(null, "Bienvenido "+ datos.getLogin());
-             new Principal().setVisible(true);
+             new PrincipalAdmin().setVisible(true);
              this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Contraseña o Usuario Incorrecto");

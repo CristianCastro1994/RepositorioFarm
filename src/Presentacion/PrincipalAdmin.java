@@ -123,6 +123,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
         jBVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/application-exit.png"))); // NOI18N
         jBVentas.setText("Ventas");
+        jBVentas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBVentas.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        jBVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jBCajas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1488350833_vault.png"))); // NOI18N
         jBCajas.setText("Caja");
@@ -524,7 +527,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2)
