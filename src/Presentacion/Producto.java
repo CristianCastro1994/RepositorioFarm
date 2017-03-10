@@ -6,7 +6,7 @@
 package Presentacion;
 
 import Datos.DProducto;
-import Consultas.CProducto;
+import Funciones.FProducto;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -65,7 +65,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTUtilidad = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jCCategoria = new javax.swing.JComboBox<>();
+        jCCategoria = new javax.swing.JComboBox<String>();
         jLabel16 = new javax.swing.JLabel();
         jTPrecioVenta = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -78,7 +78,7 @@ public class Producto extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<String>();
         jTextField5 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -131,13 +131,13 @@ public class Producto extends javax.swing.JFrame {
 
         jTProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Código de Barras", "Nombre ", "Descripción", "Stock", "Límite Stock"
+                "Código de Barras", "Nombre ", "Descripción", "Stock", "Límite Stock"
             }
         ));
         jTProducto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
@@ -200,7 +200,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel14.setText("Utilidad:");
         jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 80, -1));
 
-        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TABLETA", "JARABE", "INYECTABLE", "Item 4" }));
+        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TABLETA", "JARABE", "INYECTABLE", "Item 4" }));
         jPanel4.add(jCCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, 30));
 
         jLabel16.setText("Descripción:");
@@ -238,7 +238,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel3.setText("Tipo de Codificación");
         jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 28, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code 128", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Code 128", "Item 2", "Item 3", "Item 4" }));
         jPanel7.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 50, 142, -1));
         jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 80));
 
@@ -282,7 +282,7 @@ public class Producto extends javax.swing.JFrame {
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
     DProducto datos = new DProducto();
-    CProducto funcion = new CProducto();
+    FProducto funcion = new FProducto();
     
     //Aca inicio la variable cal tipo calendario para poder obtener la fecha
     Calendar cal;
@@ -299,6 +299,7 @@ public class Producto extends javax.swing.JFrame {
     datos.setSitio(jTSitio.getText());
     datos.setLimite(Double.valueOf(jTStockMinimo.getText()));
     datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
+    datos.setCategoria(jCCategoria.getSelectedItem().toString());
     datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
     datos.setVencimiento(new Date(a,m,d));
     
@@ -328,7 +329,7 @@ public class Producto extends javax.swing.JFrame {
 //        
 //        try {
 //            DefaultTableModel modelo;
-//            CProducto func = new CProducto();
+//            FProducto func = new FProducto();
 //            modelo = func.mostrar(jTBuscar.getText());
 //            jTProducto.setModel(modelo);
 //            
@@ -348,7 +349,7 @@ public class Producto extends javax.swing.JFrame {
 //        sumaDeCadenas = sumaDeCadenas + c;
 //        try {
 //            DefaultTableModel modelo;
-//            CProducto func = new CProducto();
+//            FProducto func = new FProducto();
 //            modelo = func.mostrar(sumaDeCadenas);
 //            jTProducto.setModel(modelo);
 //            
@@ -363,7 +364,7 @@ public class Producto extends javax.swing.JFrame {
         if (!"".equals(ObtenerTexto)){
             try {
             DefaultTableModel modelo;
-            CProducto func = new CProducto();
+            FProducto func = new FProducto();
             modelo = func.mostrar(jTBuscar.getText());
             jTProducto.setModel(modelo);
             
