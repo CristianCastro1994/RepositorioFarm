@@ -310,7 +310,23 @@ public class Producto extends javax.swing.JFrame {
     }
     
     }//GEN-LAST:event_jBGuardarActionPerformed
-
+    public void Validar(){
+        if(jTCodigoBarras.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Código de Barras");
+        }
+        if (jTNombre.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Nombre");
+        }
+        if (jTDescripcion.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Descripción");
+        }
+        if (jCFechaVencimiento.getDateFormatString().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe  ingresar la Fecha de Vencimiento");
+        }
+        if (jTPrecioVenta.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
+        }
+    }
     private void jTCodigoBarrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTCodigoBarrasKeyPressed
          
       

@@ -7,7 +7,7 @@ package Presentacion;
 
 import javax.swing.JOptionPane;
 import Datos.DEmpleado;
-import Consultas.CEmpleado;
+import Funciones.FEmpleado;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -140,7 +140,7 @@ public class Login extends javax.swing.JFrame {
             return;
         }
         DEmpleado datos = new DEmpleado();
-        CEmpleado funcion = new CEmpleado();
+        FEmpleado funcion = new FEmpleado();
 
         datos.setLogin(jTUsuario.getText());
         datos.setPassword(jTContraseña.getText());

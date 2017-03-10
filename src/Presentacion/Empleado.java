@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Richard
@@ -73,7 +75,7 @@ public class Empleado extends javax.swing.JFrame {
         jTextField13 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCUsuario = new javax.swing.JComboBox<String>();
         jBNuevo = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
@@ -134,88 +136,88 @@ public class Empleado extends javax.swing.JFrame {
 
         jLabel1.setText("ID Empleado: ");
         jPanel4.add(jLabel1);
-        jLabel1.setBounds(28, 30, 78, 16);
+        jLabel1.setBounds(28, 30, 67, 14);
 
         jLabel2.setText("Nombre:");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(28, 68, 48, 16);
+        jLabel2.setBounds(28, 68, 41, 14);
         jPanel4.add(jTextField2);
-        jTextField2.setBounds(105, 27, 117, 28);
+        jTextField2.setBounds(105, 27, 117, 20);
 
         jLabel3.setText("Apellidos");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(28, 106, 51, 16);
+        jLabel3.setBounds(28, 106, 42, 14);
         jPanel4.add(jTextField3);
-        jTextField3.setBounds(105, 65, 117, 28);
+        jTextField3.setBounds(105, 65, 117, 20);
         jPanel4.add(jTextField4);
-        jTextField4.setBounds(105, 103, 117, 28);
+        jTextField4.setBounds(105, 103, 117, 20);
 
         jLabel4.setText("Sexo:");
         jPanel4.add(jLabel4);
-        jLabel4.setBounds(28, 145, 30, 16);
+        jLabel4.setBounds(28, 145, 28, 14);
 
         jRadioButton1.setText("Masculino ");
         jPanel4.add(jRadioButton1);
-        jRadioButton1.setBounds(75, 141, 81, 18);
+        jRadioButton1.setBounds(75, 141, 75, 23);
 
         jRadioButton2.setText("Femenino");
         jPanel4.add(jRadioButton2);
-        jRadioButton2.setBounds(168, 141, 78, 18);
+        jRadioButton2.setBounds(168, 141, 71, 23);
 
         jLabel5.setText("Fecha de Nacimiento:");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(28, 185, 120, 16);
+        jLabel5.setBounds(28, 185, 103, 14);
 
         jTextField5.setText("Fecha");
         jPanel4.add(jTextField5);
-        jTextField5.setBounds(141, 182, 98, 28);
+        jTextField5.setBounds(141, 182, 98, 20);
 
         jLabel6.setText("Dirección: ");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(28, 220, 58, 16);
+        jLabel6.setBounds(28, 220, 50, 14);
 
         jScrollPane1.setViewportView(jTextPane1);
 
         jPanel4.add(jScrollPane1);
         jScrollPane1.setBounds(88, 220, 424, 59);
         jPanel4.add(jTextField6);
-        jTextField6.setBounds(95, 297, 155, 28);
+        jTextField6.setBounds(95, 297, 155, 20);
 
         jLabel7.setText("Telefono:");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(31, 300, 51, 16);
+        jLabel7.setBounds(31, 300, 46, 14);
 
         jLabel8.setText("Celular:");
         jPanel4.add(jLabel8);
-        jLabel8.setBounds(31, 338, 43, 16);
+        jLabel8.setBounds(31, 338, 37, 14);
 
         jLabel9.setText("C.I.:");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(31, 379, 21, 16);
+        jLabel9.setBounds(31, 379, 23, 14);
         jPanel4.add(jTextField7);
-        jTextField7.setBounds(95, 335, 155, 28);
+        jTextField7.setBounds(95, 335, 155, 20);
         jPanel4.add(jTextField8);
-        jTextField8.setBounds(95, 373, 155, 28);
+        jTextField8.setBounds(95, 373, 155, 20);
 
         jTextField9.setText("Fecha");
         jPanel4.add(jTextField9);
-        jTextField9.setBounds(431, 27, 112, 28);
+        jTextField9.setBounds(431, 27, 112, 20);
 
         jLabel10.setText("Fecha de Ingreso:");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(339, 30, 99, 16);
+        jLabel10.setBounds(339, 30, 88, 14);
 
         jLabel11.setText("E-mail:");
         jPanel4.add(jLabel11);
-        jLabel11.setBounds(395, 68, 39, 16);
+        jLabel11.setBounds(395, 68, 32, 14);
         jPanel4.add(jTextField10);
-        jTextField10.setBounds(431, 65, 112, 28);
+        jTextField10.setBounds(431, 65, 112, 20);
         jPanel4.add(jTextField11);
-        jTextField11.setBounds(431, 103, 112, 28);
+        jTextField11.setBounds(431, 103, 112, 20);
 
         jLabel12.setText("Sueldo:");
         jPanel4.add(jLabel12);
-        jLabel12.setBounds(391, 106, 42, 16);
+        jLabel12.setBounds(391, 106, 36, 14);
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
 
@@ -246,25 +248,25 @@ public class Empleado extends javax.swing.JFrame {
         jPanel4.add(jPanel5);
         jPanel5.setBounds(380, 160, 210, 50);
         jPanel4.add(jTextField12);
-        jTextField12.setBounds(440, 300, 100, 28);
+        jTextField12.setBounds(440, 300, 100, 20);
 
         jLabel13.setText("Usuario:");
         jPanel4.add(jLabel13);
-        jLabel13.setBounds(390, 303, 47, 16);
+        jLabel13.setBounds(390, 303, 40, 14);
         jPanel4.add(jTextField13);
-        jTextField13.setBounds(440, 340, 100, 28);
+        jTextField13.setBounds(440, 340, 100, 20);
 
         jLabel14.setText("Contraseña:");
         jPanel4.add(jLabel14);
-        jLabel14.setBounds(370, 350, 70, 16);
+        jLabel14.setBounds(370, 350, 70, 14);
 
         jLabel15.setText("Tipo de Usuario:");
         jPanel4.add(jLabel15);
-        jLabel15.setBounds(320, 380, 100, 16);
+        jLabel15.setBounds(320, 380, 100, 14);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRADOR", "Item 2", "Item 3", "Item 4" }));
-        jPanel4.add(jComboBox1);
-        jComboBox1.setBounds(440, 370, 140, 26);
+        jCUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ADMINISTRADOR", "Item 2", "Item 3", "Item 4" }));
+        jPanel4.add(jCUsuario);
+        jCUsuario.setBounds(440, 370, 140, 20);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 410));
 
@@ -273,6 +275,11 @@ public class Empleado extends javax.swing.JFrame {
         jBNuevo.setText("Nuevo");
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBModificar.setText("Modificar");
 
@@ -325,6 +332,10 @@ public class Empleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1KeyPressed
 
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+JOptionPane.showMessageDialog(null, jCUsuario.getSelectedItem().toString());        // TODO add your handling code here:
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,7 +378,7 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBReporte;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

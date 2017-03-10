@@ -20,12 +20,13 @@ public class DProducto {
     private double Stock;
     private double Limite;
     private double Precio;
+    private String Categoria;
     private double PrecioCosto;
     private Date Vencimiento;
     
     public DProducto(int Codigo, String Nombre, String Descripcion,
             String Sitio, double Cantidad, double Stock, double Limite,
-            double Precio, double PrecioCosto, Date Vencimiento){
+            double Precio, String Categoria, double PrecioCosto, Date Vencimiento){
         this.Codigo = Codigo;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
@@ -34,6 +35,7 @@ public class DProducto {
         this.Stock = Stock;
         this.Limite = Limite;
         this.Precio = Precio;
+        this.Categoria = Categoria;
         this.PrecioCosto = PrecioCosto;
         this.Vencimiento = Vencimiento;
         
@@ -103,6 +105,14 @@ public class DProducto {
      
      public void setPrecio(double Precio){
          this.Precio = Precio;
+     }
+     
+     public String getCategoria(){
+         return Categoria;
+     }
+     
+     public void setCategoria(String Categoria){
+         this.Categoria = Categoria;
      }
      
      public double getPrecioCosto(){

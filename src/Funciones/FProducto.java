@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Consultas;
+package Funciones;
 
 import Conexion.Conexion;
 import Datos.DEmpleado;
@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Richard
  */
-public class CProducto {
+public class FProducto {
     int totalRegistros = 0;
     String sSQL;
      private Conexion mysql = new Conexion(); //Instanciando la clase conexion
@@ -43,6 +43,7 @@ public class CProducto {
            cs.setDouble("_stock", 0);
            cs.setDouble("_limite", datos.getLimite());
            cs.setDouble("_precio", datos.getPrecio());
+           cs.setString("_categoria", datos.getCategoria());
            cs.setDouble("_precioCosto", datos.getPrecioCosto());
            cs.setDate("_vencimiento", datos.getVencimiento());
            

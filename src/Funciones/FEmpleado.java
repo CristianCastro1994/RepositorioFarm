@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Consultas;
+package Funciones;
 
 
 import Conexion.Conexion;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Richard
  */
-public class CEmpleado {
+public class FEmpleado {
      private Conexion mysql = new Conexion(); //Instanciando la clase conexion
     private Connection cn = mysql.conectar();
     private String sSQL = ""; //Sentencia SQL
