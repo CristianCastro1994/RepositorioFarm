@@ -8,6 +8,7 @@ package Presentacion;
 import Datos.DProducto;
 import Funciones.FProducto;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -23,6 +24,11 @@ public class Producto extends javax.swing.JFrame {
      */
     public Producto() {
         initComponents();
+        buscar();
+       desabilitar();
+       jBGuardar.setEnabled(false);
+       jBModificar.setEnabled(false);
+       jBCancelar.setEnabled(false);
     }
 
     /**
@@ -34,38 +40,35 @@ public class Producto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        JGrupoProducto = new javax.swing.ButtonGroup();
+        jTabNuevoModificar = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jTBuscar = new javax.swing.JTextField();
+        jRBNombre = new javax.swing.JRadioButton();
+        jRBCodigoBarras = new javax.swing.JRadioButton();
         jRBDescripcion = new javax.swing.JRadioButton();
-        jRBTipoUsuario = new javax.swing.JRadioButton();
-        jRBDescripcion1 = new javax.swing.JRadioButton();
         jBReporte = new javax.swing.JButton();
-        jRBDescripcion2 = new javax.swing.JRadioButton();
+        jRBCategoria = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTProducto = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        jBModificar1 = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jPanelProducto = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTDescripcion = new javax.swing.JTextPane();
-        jTStock = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTPrecioCosto = new javax.swing.JTextField();
         jTCodigoBarras = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
-        jTStockMinimo = new javax.swing.JTextField();
+        jTLimite = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jTUtilidad = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jCCategoria = new javax.swing.JComboBox<String>();
+        jCCategoria = new javax.swing.JComboBox<>();
         jLabel16 = new javax.swing.JLabel();
         jTPrecioVenta = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -78,7 +81,7 @@ public class Producto extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jTextField5 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -91,6 +94,12 @@ public class Producto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PRODUCTOS");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabNuevoModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabNuevoModificarMouseClicked(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,23 +121,34 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, -1));
 
-        jRBDescripcion.setText("Nombre");
-        jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 111, -1));
+        JGrupoProducto.add(jRBNombre);
+        jRBNombre.setText("Nombre");
+        jPanel3.add(jRBNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 111, -1));
 
-        jRBTipoUsuario.setText("Cód. Producto");
-        jPanel3.add(jRBTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
+        JGrupoProducto.add(jRBCodigoBarras);
+        jRBCodigoBarras.setSelected(true);
+        jRBCodigoBarras.setText("Codigo Barras");
+        jPanel3.add(jRBCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
 
-        jRBDescripcion1.setText("Descripción");
-        jPanel3.add(jRBDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 111, -1));
+        JGrupoProducto.add(jRBDescripcion);
+        jRBDescripcion.setText("Descripción");
+        jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 111, -1));
 
         jBReporte.setText("Reporte ");
+        jBReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBReporteActionPerformed(evt);
+            }
+        });
         jPanel3.add(jBReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
-        jRBDescripcion2.setText("Categoria");
-        jPanel3.add(jRBDescripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 111, -1));
+        JGrupoProducto.add(jRBCategoria);
+        jRBCategoria.setText("Categoria");
+        jPanel3.add(jRBCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 111, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 570, 100));
 
+        jTProducto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jTProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -141,13 +161,31 @@ public class Producto extends javax.swing.JFrame {
             }
         ));
         jTProducto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTProducto.setRowHeight(25);
+        jTProducto.setShowVerticalLines(true);
         jScrollPane2.setViewportView(jTProducto);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 870, 180));
 
-        jTabbedPane4.addTab("Buscar", jPanel1);
+        jBModificar1.setText("Modificar");
+        jBModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, 100, 50));
+
+        jTabNuevoModificar.addTab("Buscar", jPanel1);
+
+        jPanelProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Producto"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,14 +200,6 @@ public class Producto extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTDescripcion);
 
         jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 157, 440, 59));
-        jPanel4.add(jTStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 110, 30));
-
-        jLabel7.setText("Stock:");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
-
-        jLabel8.setText("Precio Costo:");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 80, -1));
-        jPanel4.add(jTPrecioCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 140, 30));
 
         jTCodigoBarras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -191,25 +221,21 @@ public class Producto extends javax.swing.JFrame {
         jPanel5.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(77, 16, -1, -1));
 
         jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 180, 50));
-        jPanel4.add(jTStockMinimo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 110, 30));
+        jPanel4.add(jTLimite, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 110, 30));
 
-        jLabel13.setText("Stock Minimo:");
-        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 90, -1));
-        jPanel4.add(jTUtilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 130, 30));
+        jLabel13.setText("Limite:");
+        jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 90, -1));
 
-        jLabel14.setText("Utilidad:");
-        jPanel4.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, 80, -1));
-
-        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TABLETA", "JARABE", "INYECTABLE", "Item 4" }));
-        jPanel4.add(jCCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 140, 30));
+        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TABLETA", "JARABE", "INYECTABLE", "Item 4" }));
+        jPanel4.add(jCCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 30));
 
         jLabel16.setText("Descripción:");
         jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 141, 70, -1));
-        jPanel4.add(jTPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, 130, 30));
+        jPanel4.add(jTPrecioVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 130, 30));
 
-        jLabel17.setText("Precio Venta:");
-        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 80, -1));
-        jPanel4.add(jTSitio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 140, 30));
+        jLabel17.setText("Precio");
+        jPanel4.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 80, -1));
+        jPanel4.add(jTSitio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 110, 30));
 
         jLabel9.setText(" Vencimiento:");
         jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 232, 80, -1));
@@ -218,12 +244,12 @@ public class Producto extends javax.swing.JFrame {
         jCFechaVencimiento.setForeground(new java.awt.Color(207, 207, 207));
         jCFechaVencimiento.setDateFormatString("yyyy-MM-dd");
         jCFechaVencimiento.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        jPanel4.add(jCFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 252, 150, 30));
+        jPanel4.add(jCFechaVencimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 150, 30));
 
         jLabel11.setText("Sitio:");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 80, -1));
+        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 80, -1));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 410));
+        jPanelProducto.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 410));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -238,7 +264,7 @@ public class Producto extends javax.swing.JFrame {
         jLabel3.setText("Tipo de Codificación");
         jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 28, -1, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Code 128", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code 128", "Item 2", "Item 3", "Item 4" }));
         jPanel7.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 50, 142, -1));
         jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 80));
 
@@ -250,10 +276,15 @@ public class Producto extends javax.swing.JFrame {
 
         jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 161, 190, 220));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 220, 400));
+        jPanelProducto.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 220, 400));
 
         jBNuevo.setText("Nuevo");
-        jPanel2.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 100, 50));
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
+        jPanelProducto.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 100, 50));
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -261,26 +292,63 @@ public class Producto extends javax.swing.JFrame {
                 jBGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 110, 100, 50));
+        jPanelProducto.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 100, 50));
 
         jBModificar.setText("Modificar");
-        jPanel2.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 190, 100, 50));
+        jBModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificarActionPerformed(evt);
+            }
+        });
+        jPanelProducto.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 100, 50));
 
         jBCancelar.setText("Cancelar");
-        jPanel2.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 280, 100, 50));
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
+        jPanelProducto.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 100, 50));
 
         jBSalir.setText("Salir");
-        jPanel2.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 100, 50));
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+        jPanelProducto.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 100, 50));
 
-        jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
+        jTabNuevoModificar.addTab("Nuevo / Modificar", jPanelProducto);
 
-        getContentPane().add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 901, 478));
+        getContentPane().add(jTabNuevoModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 478));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+    if(jTCodigoBarras.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Código de Barras");
+            jTCodigoBarras.requestFocus();
+        }else
+        if (jTNombre.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Nombre");
+            jTNombre.requestFocus();
+        }else
+        if (jTDescripcion.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Descripción");
+            jTDescripcion.requestFocus();
+        }else
+        if (jCFechaVencimiento.getDateFormatString().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe  ingresar la Fecha de Vencimiento");
+            jCFechaVencimiento.requestFocus();
+        }else
+        if (jTPrecioVenta.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
+            jTPrecioVenta.requestFocus();
+        }else {
+            
+        
     DProducto datos = new DProducto();
     FProducto funcion = new FProducto();
     
@@ -288,25 +356,29 @@ public class Producto extends javax.swing.JFrame {
     Calendar cal;
     int d,m,a;
     cal = jCFechaVencimiento.getCalendar();
-    a = cal.get(Calendar.YEAR);
-    m = cal.get(Calendar.MONTH);
     d = cal.get(Calendar.DAY_OF_MONTH);
+    m = cal.get(Calendar.MONTH);
+    a = cal.get(Calendar.YEAR) - 1900;
+    
+    
     //Hasta aca termina la obtencion de la fecha
-   
+    
     datos.setCodigo(Integer.valueOf(jTCodigoBarras.getText()));
     datos.setNombre(jTNombre.getText());
     datos.setDescripcion(jTDescripcion.getText());
     datos.setSitio(jTSitio.getText());
-    datos.setLimite(Double.valueOf(jTStockMinimo.getText()));
+    datos.setLimite(Double.valueOf(jTLimite.getText()));
     datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
     datos.setCategoria(jCCategoria.getSelectedItem().toString());
-    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
-    datos.setVencimiento(new Date(a,m,d));
+//    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
     
+    datos.setVencimiento(new Date(a,m,d));
+    desabilitar();
     if (funcion.insertar(datos)){
         JOptionPane.showMessageDialog(null, "Producto registrado correctamente");
     }else{
         JOptionPane.showMessageDialog(null, "Producto no ingresado");
+    }
     }
     
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -333,7 +405,21 @@ public class Producto extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jTCodigoBarrasKeyPressed
-
+    public void cambiarBusqueda(){
+         DProducto datos = new DProducto();
+    FProducto funcion = new FProducto();
+    
+        if (jRBCodigoBarras.isSelected()){
+            datos.setcambiarBusqueda("CodigoMedicamentos");
+            
+        }else if (jRBNombre.isSelected()){
+            datos.setcambiarBusqueda("Nombre");
+        }else if (jRBDescripcion.isSelected()) {
+            datos.setcambiarBusqueda("Descripcion");
+        }else if (jRBCategoria.isSelected()){
+            datos.setcambiarBusqueda("Categoria");
+        }
+    }
     private void jTBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyPressed
      
 //        char c = evt.getKeyChar();
@@ -376,21 +462,209 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTBuscarKeyTyped
 
     private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
-      String ObtenerTexto = jTBuscar.getText();
-        if (!"".equals(ObtenerTexto)){
-            try {
+buscar();
+jTProducto.getSelectionModel().setSelectionInterval(0, 0);
+//      String ObtenerTexto = jTBuscar.getText();
+//        if (!"".equals(ObtenerTexto)){
+            
+//        }
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarKeyReleased
+
+    private void jBReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReporteActionPerformed
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jBReporteActionPerformed
+
+    private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
+if(jTCodigoBarras.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Código de Barras");
+        }else
+        if (jTNombre.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Nombre");
+        }else
+        if (jTDescripcion.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar Descripción");
+        }else
+        if (jCFechaVencimiento.getDateFormatString().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe  ingresar la Fecha de Vencimiento");
+        }else
+        if (jTPrecioVenta.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
+        }else {
+            
+        
+    DProducto datos = new DProducto();
+    FProducto funcion = new FProducto();
+    
+    //Aca inicio la variable cal tipo calendario para poder obtener la fecha
+    Calendar cal;
+    int d,m,a;
+    cal = jCFechaVencimiento.getCalendar();
+    d = cal.get(Calendar.DAY_OF_MONTH);
+    m = cal.get(Calendar.MONTH);
+    a = cal.get(Calendar.YEAR) - 1900;
+    
+    
+    //Hasta aca termina la obtencion de la fecha
+    
+    datos.setCodigo(Integer.valueOf(jTCodigoBarras.getText()));
+    datos.setNombre(jTNombre.getText());
+    datos.setDescripcion(jTDescripcion.getText());
+    datos.setSitio(jTSitio.getText());
+    datos.setLimite(Double.valueOf(jTLimite.getText()));
+    datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
+    datos.setCategoria(jCCategoria.getSelectedItem().toString());
+//    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
+    
+    datos.setVencimiento(new Date(a,m,d));
+    desabilitar();
+    if (funcion.modificar(datos)){
+        JOptionPane.showMessageDialog(null, "Producto modifcado correctamente");
+        jBModificar.setEnabled(false);
+        jBNuevo.setEnabled(true);
+        jBCancelar.setEnabled(false);
+        buscar();
+        limpiar();
+    }else{
+        JOptionPane.showMessageDialog(null, "Producto no modificado");
+    }
+    }
+    }//GEN-LAST:event_jBModificarActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+        habilitar(); 
+        limpiar();
+        jBGuardar.setEnabled(true);
+        jBModificar.setEnabled(false);
+        jBCancelar.setEnabled(true);
+        jBNuevo.setEnabled(false);
+        jTCodigoBarras.requestFocus();// TODO add your handling code here:
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
+    int fila = jTProducto.getSelectedRow();
+
+    if (fila>=0){
+   
+    jTCodigoBarras.setText(this.jTProducto.getValueAt(fila, 0).toString());
+    jTNombre.setText(this.jTProducto.getValueAt(fila, 1).toString());
+    jTDescripcion.setText(this.jTProducto.getValueAt(fila, 2).toString());
+    jTSitio.setText(this.jTProducto.getValueAt(fila, 3).toString());
+    jTLimite.setText(this.jTProducto.getValueAt(fila, 5).toString());
+    jTPrecioVenta.setText(this.jTProducto.getValueAt(fila, 6).toString());
+    jCFechaVencimiento.setDate(Date.valueOf(this.jTProducto.getValueAt(fila, 7).toString()));
+    
+//    jCCategoria.setSelectedItem(this.jTProducto.getValueAt(fila, 3).toString());
+    jTabNuevoModificar.setSelectedIndex(1); 
+    jBGuardar.setEnabled(false);
+    jBNuevo.setEnabled(false);
+    jBCancelar.setEnabled(true);
+    jBModificar.setEnabled(true);
+    habilitar();
+    jTCodigoBarras.setEnabled(false);
+    }else{
+    JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
+    }
+    // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar1ActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        limpiar();
+        jBCancelar.setEnabled(false);
+        jBGuardar.setEnabled(false);
+        jBNuevo.setEnabled(true);
+        jBModificar.setEnabled(false);
+        desabilitar();
+        
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    private void jTabNuevoModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabNuevoModificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTabNuevoModificarMouseClicked
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+    DProducto datos = new DProducto();
+    FProducto funcion = new FProducto();
+    int fila = jTProducto.getSelectedRow();
+    
+    if (fila>=0){
+    
+    datos.setCodigo(Integer.valueOf(this.jTProducto.getValueAt(fila, 0).toString()));
+     if (funcion.eliminar(datos)){
+        JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+        buscar();
+    }else{
+        JOptionPane.showMessageDialog(null, "Producto no eliminado");
+    }
+    }else{
+    JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
+    }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarActionPerformed
+   
+    public void limpiar(){
+        jTCodigoBarras.setText("");
+        jTNombre.setText("");
+        jTDescripcion.setText("");
+        jTLimite.setText("");
+        jTPrecioVenta.setText("");
+        jTSitio.setText("");
+//        jCFechaVencimiento.setCalendar(000);
+    }
+    
+    public void buscar(){
+   
+    //llamo las funciones y datos aca para poder enviar y recibir datos    
+    DProducto datos = new DProducto();
+    FProducto funcion = new FProducto();
+    
+    //Aca hago seleccionar el tipo de busqueda por el cual quiere hacer el usuario 
+        if (jRBCodigoBarras.isSelected()){
+            datos.setcambiarBusqueda("CodigoMedicamentos");
+            
+        }else if (jRBNombre.isSelected()){
+            datos.setcambiarBusqueda("Nombre");
+        }else if (jRBDescripcion.isSelected()) {
+            datos.setcambiarBusqueda("Descripcion");
+        }else if (jRBCategoria.isSelected()){
+            datos.setcambiarBusqueda("Categoria");
+        }
+        
+        // En esta parte le envio a la funcion mostrar los datos que he obtenido para asi obtener mi búsqueda
+        try {
             DefaultTableModel modelo;
             FProducto func = new FProducto();
-            modelo = func.mostrar(jTBuscar.getText());
+            modelo = func.mostrar(jTBuscar.getText(), datos);
             jTProducto.setModel(modelo);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        }
-            // TODO add your handling code here:
-    }//GEN-LAST:event_jTBuscarKeyReleased
-
+    }
+    
+    public void desabilitar(){
+        jTCodigoBarras.setEnabled(false);
+        jTNombre.setEnabled(false);
+        jTDescripcion.setEnabled(false);
+        jTLimite.setEnabled(false);
+        jTPrecioVenta.setEnabled(false);
+        jTSitio.setEnabled(false);
+        jCFechaVencimiento.setEnabled(false);
+        jCCategoria.setEnabled(false);
+    }
+    public void habilitar(){
+        jTCodigoBarras.setEnabled(true);
+        jTNombre.setEnabled(true);
+        jTDescripcion.setEnabled(true);
+        jTLimite.setEnabled(true);
+        jTPrecioVenta.setEnabled(true);
+        jTSitio.setEnabled(true);
+        jCFechaVencimiento.setEnabled(true);
+        jCCategoria.setEnabled(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -427,9 +701,12 @@ public class Producto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup JGrupoProducto;
     private javax.swing.JButton jBCancelar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
+    private javax.swing.JButton jBModificar1;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBReporte;
     private javax.swing.JButton jBSalir;
@@ -442,26 +719,23 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelProducto;
+    private javax.swing.JRadioButton jRBCategoria;
+    private javax.swing.JRadioButton jRBCodigoBarras;
     private javax.swing.JRadioButton jRBDescripcion;
-    private javax.swing.JRadioButton jRBDescripcion1;
-    private javax.swing.JRadioButton jRBDescripcion2;
-    private javax.swing.JRadioButton jRBTipoUsuario;
+    private javax.swing.JRadioButton jRBNombre;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
@@ -469,15 +743,12 @@ public class Producto extends javax.swing.JFrame {
     private javax.swing.JTextField jTBuscar;
     private javax.swing.JTextField jTCodigoBarras;
     private javax.swing.JTextPane jTDescripcion;
+    private javax.swing.JTextField jTLimite;
     private javax.swing.JTextField jTNombre;
-    private javax.swing.JTextField jTPrecioCosto;
     private javax.swing.JTextField jTPrecioVenta;
     private javax.swing.JTable jTProducto;
     private javax.swing.JTextField jTSitio;
-    private javax.swing.JTextField jTStock;
-    private javax.swing.JTextField jTStockMinimo;
-    private javax.swing.JTextField jTUtilidad;
-    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTabbedPane jTabNuevoModificar;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
