@@ -5,6 +5,7 @@
  */
 package Datos;
 
+import java.io.FileInputStream;
 import java.sql.Date;
 
 /**
@@ -23,10 +24,11 @@ public class DProducto {
     private String Categoria;
     private double PrecioCosto;
     private Date Vencimiento;
-    
+    private String cambiarBusqueda;
+    private FileInputStream Imagen;
     public DProducto(int Codigo, String Nombre, String Descripcion,
             String Sitio, double Cantidad, double Stock, double Limite,
-            double Precio, String Categoria, double PrecioCosto, Date Vencimiento){
+            double Precio, String Categoria, double PrecioCosto, Date Vencimiento, String cambiarBusqueda, FileInputStream Imagen){
         this.Codigo = Codigo;
         this.Nombre = Nombre;
         this.Descripcion = Descripcion;
@@ -38,7 +40,8 @@ public class DProducto {
         this.Categoria = Categoria;
         this.PrecioCosto = PrecioCosto;
         this.Vencimiento = Vencimiento;
-        
+        this.cambiarBusqueda = cambiarBusqueda;
+        this.Imagen = Imagen;
     }
 
     public DProducto() {
@@ -129,5 +132,21 @@ public class DProducto {
      
      public void setVencimiento(Date Vencimiento){
          this.Vencimiento = Vencimiento;
+     }
+     
+     public String getcambiarBusqueda(){
+         return cambiarBusqueda;
+     }
+     
+     public void setcambiarBusqueda(String cambiarBusqueda){
+         this.cambiarBusqueda = cambiarBusqueda;
+     }
+     
+     public FileInputStream getImagen(){
+         return Imagen;
+     }
+     
+     public void setImagen(FileInputStream Imagen){
+         this.Imagen = Imagen;
      }
 }

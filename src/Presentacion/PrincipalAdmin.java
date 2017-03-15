@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 package Presentacion;
-
+import Datos.DCliente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Richard
  */
 public class PrincipalAdmin extends javax.swing.JFrame {
-
+DCliente datos = new DCliente();
     /**
      * Creates new form Principal
      */
@@ -40,11 +41,11 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTNombre = new javax.swing.JTextField();
+        jBCliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTClave = new javax.swing.JTextField();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -66,6 +67,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
         jTextField14 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -143,12 +145,23 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/user.png"))); // NOI18N
         jLabel5.setText("Cliente");
 
-        jButton1.setText("...");
+        jBCliente.setText("...");
+        jBCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBClienteActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendar.png"))); // NOI18N
         jLabel4.setText("Fecha");
 
         jLabel6.setText("Cotizacion");
+
+        jTClave.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTClaveKeyReleased(evt);
+            }
+        });
 
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +236,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -240,9 +260,9 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 595, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel4)
                                 .addGap(18, 18, 18)
@@ -268,14 +288,18 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                                         .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel12)
                                             .addComponent(jLabel6)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel11))
-                                        .addGap(780, 780, 780)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel12)
+                                                    .addComponent(jLabel10)
+                                                    .addComponent(jLabel11))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton1)))
+                                        .addGap(702, 702, 702)
                                         .addComponent(jLabel8)
                                         .addGap(0, 0, 0)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTClave, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton2)
@@ -297,8 +321,8 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1)
+                            .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jBCliente)
                             .addComponent(jLabel4)
                             .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
@@ -307,17 +331,21 @@ public class PrincipalAdmin extends javax.swing.JFrame {
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel12))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8))))
+                                .addComponent(jTClave, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(21, 21, 21)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel10)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel11)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel12)))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -562,6 +590,21 @@ public class PrincipalAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField14ActionPerformed
 
+    private void jBClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClienteActionPerformed
+     BusquedaCliente form = new BusquedaCliente();
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_jBClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+        JOptionPane.showMessageDialog(null, datos.getIdCliente());// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTClaveKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTClaveKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTClaveKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -600,6 +643,7 @@ public class PrincipalAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCajas;
+    private javax.swing.JButton jBCliente;
     private javax.swing.JButton jBClientes;
     private javax.swing.JButton jBCompras;
     private javax.swing.JButton jBEmpleados;
@@ -667,13 +711,13 @@ public class PrincipalAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTClave;
+    public static javax.swing.JTextField jTNombre;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

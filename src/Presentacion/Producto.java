@@ -7,11 +7,24 @@ package Presentacion;
 
 import Datos.DProducto;
 import Funciones.FProducto;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.sql.Blob;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
+import javax.imageio.ImageIO;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -26,6 +39,7 @@ public class Producto extends javax.swing.JFrame {
         initComponents();
         buscar();
        desabilitar();
+       llenarCategoria();
        jBGuardar.setEnabled(false);
        jBModificar.setEnabled(false);
        jBCancelar.setEnabled(false);
@@ -76,20 +90,14 @@ public class Producto extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jCFechaVencimiento = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jBNuevo = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
         jBCancelar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
+        jTImagen = new javax.swing.JTextField();
+        jBAbrir = new javax.swing.JButton();
+        jLImagen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PRODUCTOS");
@@ -108,6 +116,7 @@ public class Producto extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTBuscar.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTBuscarKeyPressed(evt);
@@ -119,20 +128,23 @@ public class Producto extends javax.swing.JFrame {
                 jTBuscarKeyTyped(evt);
             }
         });
-        jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, -1));
+        jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 690, 40));
 
         JGrupoProducto.add(jRBNombre);
+        jRBNombre.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jRBNombre.setText("Nombre");
-        jPanel3.add(jRBNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 111, -1));
+        jPanel3.add(jRBNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 111, -1));
 
         JGrupoProducto.add(jRBCodigoBarras);
+        jRBCodigoBarras.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jRBCodigoBarras.setSelected(true);
         jRBCodigoBarras.setText("Codigo Barras");
-        jPanel3.add(jRBCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
+        jPanel3.add(jRBCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, -1));
 
         JGrupoProducto.add(jRBDescripcion);
+        jRBDescripcion.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jRBDescripcion.setText("Descripción");
-        jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 111, -1));
+        jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 150, -1));
 
         jBReporte.setText("Reporte ");
         jBReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -140,13 +152,14 @@ public class Producto extends javax.swing.JFrame {
                 jBReporteActionPerformed(evt);
             }
         });
-        jPanel3.add(jBReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
+        jPanel3.add(jBReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(725, 30, 120, 70));
 
         JGrupoProducto.add(jRBCategoria);
+        jRBCategoria.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jRBCategoria.setText("Categoria");
-        jPanel3.add(jRBCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 111, -1));
+        jPanel3.add(jRBCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 30, 111, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 570, 100));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, 870, 120));
 
         jTProducto.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         jTProducto.setModel(new javax.swing.table.DefaultTableModel(
@@ -165,7 +178,7 @@ public class Producto extends javax.swing.JFrame {
         jTProducto.setShowVerticalLines(true);
         jScrollPane2.setViewportView(jTProducto);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 870, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 870, 270));
 
         jBModificar1.setText("Modificar");
         jBModificar1.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +218,9 @@ public class Producto extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTCodigoBarrasKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTCodigoBarrasKeyTyped(evt);
+            }
         });
         jPanel4.add(jTCodigoBarras, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 49, 190, 28));
 
@@ -226,7 +242,6 @@ public class Producto extends javax.swing.JFrame {
         jLabel13.setText("Limite:");
         jPanel4.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 90, -1));
 
-        jCCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TABLETA", "JARABE", "INYECTABLE", "Item 4" }));
         jPanel4.add(jCCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 260, 30));
 
         jLabel16.setText("Descripción:");
@@ -251,40 +266,13 @@ public class Producto extends javax.swing.JFrame {
 
         jPanelProducto.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 410));
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Código"));
-        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setText("CODIGO ALTERNATIVO");
-        jPanel6.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 28, -1, -1));
-        jPanel6.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 74, 146, 69));
-
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Barras"));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setText("Tipo de Codificación");
-        jPanel7.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 28, -1, -1));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Code 128", "Item 2", "Item 3", "Item 4" }));
-        jPanel7.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 50, 142, -1));
-        jPanel7.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 150, 80));
-
-        jButton2.setText("Generar");
-        jPanel7.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
-
-        jButton3.setText("Imprimir");
-        jPanel7.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
-
-        jPanel6.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 161, 190, 220));
-
-        jPanelProducto.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 10, 220, 400));
-
         jBNuevo.setText("Nuevo");
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 100, 50));
+        jPanelProducto.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
 
         jBGuardar.setText("Guardar");
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -292,7 +280,7 @@ public class Producto extends javax.swing.JFrame {
                 jBGuardarActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 110, 100, 50));
+        jPanelProducto.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, 100, 50));
 
         jBModificar.setText("Modificar");
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +288,7 @@ public class Producto extends javax.swing.JFrame {
                 jBModificarActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 190, 100, 50));
+        jPanelProducto.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 100, 50));
 
         jBCancelar.setText("Cancelar");
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -308,7 +296,7 @@ public class Producto extends javax.swing.JFrame {
                 jBCancelarActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 100, 50));
+        jPanelProducto.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 280, 100, 50));
 
         jBSalir.setText("Salir");
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +304,23 @@ public class Producto extends javax.swing.JFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 350, 100, 50));
+        jPanelProducto.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 100, 50));
+        jPanelProducto.add(jTImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 280, -1));
+
+        jBAbrir.setText("Abrir");
+        jBAbrir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAbrirActionPerformed(evt);
+            }
+        });
+        jPanelProducto.add(jBAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 70, 40));
+
+        jLImagen.setBackground(new java.awt.Color(255, 255, 255));
+        jLImagen.setForeground(new java.awt.Color(255, 255, 255));
+        jLImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/SIN IMAGEN.png"))); // NOI18N
+        jLImagen.setBorder(javax.swing.BorderFactory.createTitledBorder("Imagen"));
+        jPanelProducto.add(jLImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 280, 230));
 
         jTabNuevoModificar.addTab("Nuevo / Modificar", jPanelProducto);
 
@@ -348,10 +352,12 @@ public class Producto extends javax.swing.JFrame {
             jTPrecioVenta.requestFocus();
         }else {
             
-        
+            try {
+                
+            
     DProducto datos = new DProducto();
     FProducto funcion = new FProducto();
-    
+    FileInputStream archivofoto;
     //Aca inicio la variable cal tipo calendario para poder obtener la fecha
     Calendar cal;
     int d,m,a;
@@ -370,6 +376,8 @@ public class Producto extends javax.swing.JFrame {
     datos.setLimite(Double.valueOf(jTLimite.getText()));
     datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
     datos.setCategoria(jCCategoria.getSelectedItem().toString());
+    archivofoto = new FileInputStream(jTImagen.getText());
+    datos.setImagen(archivofoto);
 //    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
     
     datos.setVencimiento(new Date(a,m,d));
@@ -379,6 +387,9 @@ public class Producto extends javax.swing.JFrame {
     }else{
         JOptionPane.showMessageDialog(null, "Producto no ingresado");
     }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+            }
     }
     
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -441,24 +452,9 @@ public class Producto extends javax.swing.JFrame {
     }//GEN-LAST:event_jTBuscarKeyPressed
 
     private void jTBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyTyped
-//        String sumaDeCadenas = "";
-//        char c = evt.getKeyChar();
-//        
-//        if (((c < '0') || (c > '9')) && (c != evt.VK_BACK_SPACE)) {
-//            evt.consume();
-//        }
-//        
-//        sumaDeCadenas = sumaDeCadenas + c;
-//        try {
-//            DefaultTableModel modelo;
-//            FProducto func = new FProducto();
-//            modelo = func.mostrar(sumaDeCadenas);
-//            jTProducto.setModel(modelo);
-//            
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }  
-                // TODO add your handling code here:
+
+        
+
     }//GEN-LAST:event_jTBuscarKeyTyped
 
     private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
@@ -492,10 +488,12 @@ if(jTCodigoBarras.getText().length() == 0){
             JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
         }else {
             
-        
+            try {
+                
+          
     DProducto datos = new DProducto();
     FProducto funcion = new FProducto();
-    
+    FileInputStream archivofoto;
     //Aca inicio la variable cal tipo calendario para poder obtener la fecha
     Calendar cal;
     int d,m,a;
@@ -514,6 +512,11 @@ if(jTCodigoBarras.getText().length() == 0){
     datos.setLimite(Double.valueOf(jTLimite.getText()));
     datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
     datos.setCategoria(jCCategoria.getSelectedItem().toString());
+     archivofoto = new FileInputStream(jTImagen.getText());
+     if (jTImagen.getText().length() > 0){
+       datos.setImagen(archivofoto);  
+     }
+     
 //    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
     
     datos.setVencimiento(new Date(a,m,d));
@@ -528,9 +531,35 @@ if(jTCodigoBarras.getText().length() == 0){
     }else{
         JOptionPane.showMessageDialog(null, "Producto no modificado");
     }
-    }
+    }   catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+            }
+        }
     }//GEN-LAST:event_jBModificarActionPerformed
+    
+    public void mostrarImagen(){
+         int fila = jTProducto.getSelectedRow();
 
+    if (fila>=0){
+    try {
+            Blob blob;
+            
+               
+            FProducto func = new FProducto();
+            blob = func.mostrarImagen(this.jTProducto.getValueAt(fila, 0).toString());
+            byte[] data = blob.getBytes(1, (int)blob.length());
+               BufferedImage img = null;
+               img = ImageIO.read(new ByteArrayInputStream(data));
+             jLImagen.setIcon(new ImageIcon(img.getScaledInstance(200, 200, Image.SCALE_DEFAULT)));  
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } 
+    }else{
+    JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
+    }
+        
+    }
+    
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
         habilitar(); 
         limpiar();
@@ -561,6 +590,7 @@ if(jTCodigoBarras.getText().length() == 0){
     jBCancelar.setEnabled(true);
     jBModificar.setEnabled(true);
     habilitar();
+    mostrarImagen();
     jTCodigoBarras.setEnabled(false);
     }else{
     JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
@@ -604,6 +634,31 @@ this.dispose();        // TODO add your handling code here:
     JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
     }        // TODO add your handling code here:
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAbrirActionPerformed
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Formatos de Archivos JPEG(*.JPG;*.JPEG)", "jpg","jpeg");
+       
+        JFileChooser archivo = new JFileChooser();
+        archivo.addChoosableFileFilter(filtro);
+        archivo.setDialogTitle("Abrir Archivo");
+    int ventana = archivo.showOpenDialog(null);
+    if (ventana == JFileChooser.APPROVE_OPTION){
+        File file = archivo.getSelectedFile();
+        jTImagen.setText(String.valueOf(file));
+        Image foto = getToolkit().getImage(jTImagen.getText());
+        foto = foto.getScaledInstance(300, 300, Image.SCALE_DEFAULT);
+        jLImagen.setIcon(new ImageIcon(foto));
+        
+    }    // TODO add your handling code here:
+    }//GEN-LAST:event_jBAbrirActionPerformed
+
+    private void jTCodigoBarrasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTCodigoBarrasKeyTyped
+char c = evt.getKeyChar();
+        
+        if (((c < '0') || (c > '9')) && (c != evt.VK_BACK_SPACE)) {
+            evt.consume();
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCodigoBarrasKeyTyped
    
     public void limpiar(){
         jTCodigoBarras.setText("");
@@ -644,7 +699,17 @@ this.dispose();        // TODO add your handling code here:
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+    public void llenarCategoria(){
+         try {
+              DefaultComboBoxModel modelo;
+            FProducto func = new FProducto();
+            modelo = func.mostrarCategoria();
+            jCCategoria.setModel(modelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
     public void desabilitar(){
         jTCodigoBarras.setEnabled(false);
         jTNombre.setEnabled(false);
@@ -702,6 +767,7 @@ this.dispose();        // TODO add your handling code here:
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup JGrupoProducto;
+    private javax.swing.JButton jBAbrir;
     private javax.swing.JButton jBCancelar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
@@ -710,27 +776,21 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBReporte;
     private javax.swing.JButton jBSalir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCCategoria;
     private com.toedter.calendar.JDateChooser jCFechaVencimiento;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLImagen;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelProducto;
     private javax.swing.JRadioButton jRBCategoria;
     private javax.swing.JRadioButton jRBCodigoBarras;
@@ -743,13 +803,12 @@ this.dispose();        // TODO add your handling code here:
     private javax.swing.JTextField jTBuscar;
     private javax.swing.JTextField jTCodigoBarras;
     private javax.swing.JTextPane jTDescripcion;
+    private javax.swing.JTextField jTImagen;
     private javax.swing.JTextField jTLimite;
     private javax.swing.JTextField jTNombre;
     private javax.swing.JTextField jTPrecioVenta;
     private javax.swing.JTable jTProducto;
     private javax.swing.JTextField jTSitio;
     private javax.swing.JTabbedPane jTabNuevoModificar;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
