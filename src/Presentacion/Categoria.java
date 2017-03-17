@@ -27,9 +27,7 @@ public class Categoria extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jBModificar = new javax.swing.JButton();
-        jBSalir = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
+        btngroupCategoria = new javax.swing.ButtonGroup();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -44,17 +42,14 @@ public class Categoria extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jBNuevo = new javax.swing.JButton();
-        jBGuardar = new javax.swing.JButton();
+        jBNuevo1 = new javax.swing.JButton();
+        jBGuardar1 = new javax.swing.JButton();
+        jBModificar1 = new javax.swing.JButton();
+        jBCancelar1 = new javax.swing.JButton();
+        jBSalir1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CATEGORIA");
-
-        jBModificar.setText("Modificar");
-
-        jBSalir.setText("Salir");
-
-        jBCancelar.setText("Cancelar");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -62,15 +57,21 @@ public class Categoria extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Críterios de Búsqueda"));
         jPanel3.setForeground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 370, -1));
 
+        jTextField1.setToolTipText("Ingrese aquí");
+        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 580, -1));
+
+        jRBTipoUsuario.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupCategoria.add(jRBTipoUsuario);
         jRBTipoUsuario.setText("ID Categoria");
         jPanel3.add(jRBTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
 
+        jRBDescripcion1.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupCategoria.add(jRBDescripcion1);
         jRBDescripcion1.setText("Descripción");
         jPanel3.add(jRBDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 111, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 460, 100));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 630, 100));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,7 +86,7 @@ public class Categoria extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 630, 180));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 630, 180));
 
         jTabbedPane4.addTab("Buscar", jPanel1);
 
@@ -96,23 +97,52 @@ public class Categoria extends javax.swing.JFrame {
 
         jLabel1.setText("ID Categoria:");
         jPanel4.add(jLabel1);
-        jLabel1.setBounds(28, 30, 72, 16);
+        jLabel1.setBounds(28, 30, 65, 14);
 
         jLabel2.setText("Descripción:");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(28, 68, 69, 16);
+        jLabel2.setBounds(28, 68, 58, 14);
         jPanel4.add(jTextField2);
-        jTextField2.setBounds(105, 27, 117, 28);
+        jTextField2.setBounds(105, 27, 117, 20);
         jPanel4.add(jTextField3);
-        jTextField3.setBounds(105, 65, 290, 28);
+        jTextField3.setBounds(105, 65, 290, 20);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 120));
 
         jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
 
-        jBNuevo.setText("Nuevo");
+        jBNuevo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-files-to-archive.png"))); // NOI18N
+        jBNuevo1.setText("Nuevo");
+        jBNuevo1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jBNuevo1.setFocusPainted(false);
+        jBNuevo1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNuevo1.setMaximumSize(new java.awt.Dimension(71, 59));
+        jBNuevo1.setMinimumSize(new java.awt.Dimension(71, 59));
+        jBNuevo1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jBGuardar.setText("Guardar");
+        jBGuardar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/disk.png"))); // NOI18N
+        jBGuardar1.setText("Guardar");
+        jBGuardar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGuardar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jBModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
+        jBModificar1.setText("Modificar");
+        jBModificar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar1.setMaximumSize(new java.awt.Dimension(71, 59));
+        jBModificar1.setMinimumSize(new java.awt.Dimension(71, 59));
+        jBModificar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jBCancelar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dialog-cancel.png"))); // NOI18N
+        jBCancelar1.setText("Cancelar");
+        jBCancelar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCancelar1.setPreferredSize(new java.awt.Dimension(75, 59));
+        jBCancelar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jBSalir1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/exit.png"))); // NOI18N
+        jBSalir1.setText("Salir");
+        jBSalir1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalir1.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jBSalir1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,34 +151,33 @@ public class Categoria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBGuardar)
-                    .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBCancelar)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jBCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBNuevo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jBNuevo)
-                .addGap(18, 18, 18)
-                .addComponent(jBGuardar)
-                .addGap(18, 18, 18)
-                .addComponent(jBModificar)
-                .addGap(18, 18, 18)
-                .addComponent(jBCancelar)
-                .addGap(23, 23, 23)
-                .addComponent(jBSalir)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jTabbedPane4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jBNuevo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBGuardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBModificar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBSalir1)
+                        .addGap(14, 14, 14)))
                 .addContainerGap())
         );
 
@@ -191,11 +220,12 @@ public class Categoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBCancelar;
-    private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBSalir;
+    private javax.swing.ButtonGroup btngroupCategoria;
+    private javax.swing.JButton jBCancelar1;
+    private javax.swing.JButton jBGuardar1;
+    private javax.swing.JButton jBModificar1;
+    private javax.swing.JButton jBNuevo1;
+    private javax.swing.JButton jBSalir1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
