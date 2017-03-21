@@ -12,16 +12,19 @@ package Datos;
 public class DVenta {
     private int Cod_Venta;
     private int Cod_Producto;
+    private int Cod_Cliente;
     private double cantidadDetalle;
     private double PrecioProducto;
     private double SubTotal;
-    
-    public DVenta(int Cod_Venta, int Cod_Producto, double cantidadDetalle, double PrecioProducto, double SubTotal){
+    private String Comprobante;
+    public DVenta(int Cod_Venta, int Cod_Producto, int Cod_Cliente, double cantidadDetalle, double PrecioProducto, double SubTotal, String Comprobante){
         this.Cod_Venta = Cod_Venta;
         this.Cod_Producto = Cod_Producto;
+        this.Cod_Cliente = Cod_Cliente;
         this.cantidadDetalle = cantidadDetalle;
         this.PrecioProducto = PrecioProducto;
         this.SubTotal = SubTotal;
+        this.Comprobante = Comprobante;
     }
     public DVenta(){
         
@@ -41,6 +44,14 @@ public class DVenta {
     
     public void setCod_Producto(int Cod_Producto){
         this.Cod_Producto = Cod_Producto;
+    }
+    
+    public int getCod_Cliente(){
+        return Cod_Cliente;
+    }
+    
+    public void setCod_Cliente(int Cod_Cliente){
+        this.Cod_Cliente = Cod_Cliente;
     }
     
     public double getCantidadDetalle(){
@@ -65,5 +76,13 @@ public class DVenta {
     
     public void setSubTotal(double SubTotal){
         this.SubTotal = SubTotal;
+    }
+    
+    public String getComprobante (){
+        return Comprobante;
+    }
+    
+    public void setComprobante (String Comprobante){
+        this.Comprobante = Comprobante;
     }
 }
