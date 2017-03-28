@@ -17,7 +17,12 @@ public class DVenta {
     private double PrecioProducto;
     private double SubTotal;
     private String Comprobante;
-    public DVenta(int Cod_Venta, int Cod_Producto, int Cod_Cliente, double cantidadDetalle, double PrecioProducto, double SubTotal, String Comprobante){
+    private static double Total;
+    private static double TotalDolar;
+    private static double TotalPeso;
+    private static double TotalReal;
+    public DVenta(int Cod_Venta, int Cod_Producto, int Cod_Cliente, double cantidadDetalle, double PrecioProducto, double SubTotal, String Comprobante,
+            double Total, double TotalPeso, double TotalDolar, double TotalReal){
         this.Cod_Venta = Cod_Venta;
         this.Cod_Producto = Cod_Producto;
         this.Cod_Cliente = Cod_Cliente;
@@ -25,6 +30,10 @@ public class DVenta {
         this.PrecioProducto = PrecioProducto;
         this.SubTotal = SubTotal;
         this.Comprobante = Comprobante;
+        this.Total = Total;
+        this.TotalDolar = TotalDolar;
+        this.TotalPeso = TotalPeso;
+        this.TotalReal = TotalReal;
     }
     public DVenta(){
         
@@ -84,5 +93,37 @@ public class DVenta {
     
     public void setComprobante (String Comprobante){
         this.Comprobante = Comprobante;
+    }
+    
+    public double getTotal(){
+        return Total;
+    }
+    
+    public void setTotal(double Total){
+        this.Total = Total;
+    }
+    
+    public double getTotalDolar(){
+        return TotalDolar;
+    }
+    
+    public void setTotalDolar(double TotalDolar){
+        this.TotalDolar = TotalDolar;
+    }
+    
+    public double getTotalPeso(){
+        return TotalPeso;
+    }
+    
+    public void setTotalPeso(double TotalPeso){
+        this.TotalPeso = TotalPeso;
+    }
+    
+    public double getTotalReal(){
+        return TotalReal;
+    }
+    
+    public void setTotalReal(double TotalReal){
+        this.TotalReal = TotalReal;
     }
 }
