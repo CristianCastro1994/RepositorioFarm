@@ -6,11 +6,9 @@
 package Presentacion;
 
 import Datos.DProducto;
+import Datos.DProveedor;
 import Funciones.FProducto;
-import java.io.FileInputStream;
-import java.sql.Date;
-import java.util.Calendar;
-import javax.swing.DefaultComboBoxModel;
+import Funciones.FProveedor;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +23,11 @@ public class Proveedores extends javax.swing.JFrame {
      */
     public Proveedores() {
         initComponents();
+         buscar();
+       desabilitar();
+       jBGuardar.setEnabled(false);
+       jBModificar.setEnabled(false);
+       jBCancelar.setEnabled(false);
     }
 
     /**
@@ -37,18 +40,18 @@ public class Proveedores extends javax.swing.JFrame {
     private void initComponents() {
 
         btngroupProveedor = new javax.swing.ButtonGroup();
-        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jTabNuevoModificar = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jRBTipoUsuario = new javax.swing.JRadioButton();
-        jRBDescripcion1 = new javax.swing.JRadioButton();
-        jRBDescripcion2 = new javax.swing.JRadioButton();
-        jRBDescripcion3 = new javax.swing.JRadioButton();
+        jTBuscar = new javax.swing.JTextField();
+        jRBIdProveedor = new javax.swing.JRadioButton();
+        jRBCI = new javax.swing.JRadioButton();
+        jRBNombreRazonSocial = new javax.swing.JRadioButton();
+        jRBRuc = new javax.swing.JRadioButton();
         jBReporte = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTProveedores = new javax.swing.JTable();
-        jBModificar5 = new javax.swing.JButton();
+        jBModificar1 = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -68,9 +71,6 @@ public class Proveedores extends javax.swing.JFrame {
         jTCI = new javax.swing.JTextField();
         jTCelular = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTAObservacion = new javax.swing.JTextArea();
@@ -89,32 +89,32 @@ public class Proveedores extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Críterios de Búsqueda"));
         jPanel3.setForeground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 470, -1));
+        jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 470, -1));
 
-        jRBTipoUsuario.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupProveedor.add(jRBTipoUsuario);
-        jRBTipoUsuario.setText("ID Proveedor");
-        jPanel3.add(jRBTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, -1));
+        jRBIdProveedor.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupProveedor.add(jRBIdProveedor);
+        jRBIdProveedor.setText("ID Proveedor");
+        jPanel3.add(jRBIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, -1));
 
-        jRBDescripcion1.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupProveedor.add(jRBDescripcion1);
-        jRBDescripcion1.setText("C.I.");
-        jPanel3.add(jRBDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 80, -1));
+        jRBCI.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupProveedor.add(jRBCI);
+        jRBCI.setText("C.I.");
+        jPanel3.add(jRBCI, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 80, -1));
 
-        jRBDescripcion2.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupProveedor.add(jRBDescripcion2);
-        jRBDescripcion2.setText("Nombre o Razón Social");
-        jPanel3.add(jRBDescripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, -1));
+        jRBNombreRazonSocial.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupProveedor.add(jRBNombreRazonSocial);
+        jRBNombreRazonSocial.setText("Nombre o Razón Social");
+        jPanel3.add(jRBNombreRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, 140, -1));
 
-        jRBDescripcion3.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupProveedor.add(jRBDescripcion3);
-        jRBDescripcion3.setText("R.U.C.");
-        jRBDescripcion3.addActionListener(new java.awt.event.ActionListener() {
+        jRBRuc.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupProveedor.add(jRBRuc);
+        jRBRuc.setText("R.U.C.");
+        jRBRuc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRBDescripcion3ActionPerformed(evt);
+                jRBRucActionPerformed(evt);
             }
         });
-        jPanel3.add(jRBDescripcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 80, -1));
+        jPanel3.add(jRBRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 80, -1));
 
         jBReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/finder.png"))); // NOI18N
         jBReporte.setText("Reporte ");
@@ -137,26 +137,23 @@ public class Proveedores extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 630, 180));
 
-        jBModificar5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
-        jBModificar5.setText("Modificar");
-        jBModificar5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBModificar5.setMaximumSize(new java.awt.Dimension(71, 59));
-        jBModificar5.setMinimumSize(new java.awt.Dimension(71, 59));
-        jBModificar5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jBModificar5, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, 100, 70));
+        jBModificar1.setText("Modificar");
+        jBModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 100, 50));
 
-        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancel.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
-        jBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 200, 100, 70));
+        jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, 100, 50));
 
-        jTabbedPane4.addTab("Buscar", jPanel1);
+        jTabNuevoModificar.addTab("Buscar", jPanel1);
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -165,84 +162,55 @@ public class Proveedores extends javax.swing.JFrame {
 
         jLabel1.setText("ID Proveedor:");
         jPanel4.add(jLabel1);
-        jLabel1.setBounds(28, 30, 68, 14);
+        jLabel1.setBounds(28, 30, 74, 16);
         jPanel4.add(jTIDProveedor);
-        jTIDProveedor.setBounds(120, 30, 117, 20);
+        jTIDProveedor.setBounds(120, 30, 117, 28);
 
         jLabel3.setText("Nombre o Razón Social:");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(30, 70, 113, 14);
+        jLabel3.setBounds(30, 70, 133, 16);
         jPanel4.add(jTNombreRazonSocial);
-        jTNombreRazonSocial.setBounds(170, 70, 300, 20);
+        jTNombreRazonSocial.setBounds(170, 70, 300, 28);
 
         jLabel4.setText("R.U.C.:");
         jPanel4.add(jLabel4);
-        jLabel4.setBounds(120, 120, 37, 14);
+        jLabel4.setBounds(120, 120, 39, 16);
         jPanel4.add(jTRuc);
-        jTRuc.setBounds(170, 110, 120, 20);
+        jTRuc.setBounds(170, 110, 120, 28);
         jPanel4.add(jTDireccion);
-        jTDireccion.setBounds(170, 150, 300, 20);
+        jTDireccion.setBounds(170, 150, 300, 28);
 
         jLabel5.setText("Dirección:");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(110, 160, 47, 14);
+        jLabel5.setBounds(110, 160, 55, 16);
         jPanel4.add(jTTelefono);
-        jTTelefono.setBounds(170, 190, 120, 20);
+        jTTelefono.setBounds(170, 190, 120, 28);
 
         jLabel6.setText("Telefono:");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(110, 200, 46, 14);
+        jLabel6.setBounds(110, 200, 51, 16);
         jPanel4.add(jTEmail);
-        jTEmail.setBounds(170, 240, 170, 20);
+        jTEmail.setBounds(170, 240, 170, 28);
 
         jLabel7.setText("E-mail:");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(110, 240, 32, 14);
+        jLabel7.setBounds(110, 240, 39, 16);
 
         jLabel9.setText("C.I.:");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(310, 120, 39, 14);
+        jLabel9.setBounds(310, 120, 39, 16);
         jPanel4.add(jTCI);
-        jTCI.setBounds(350, 110, 120, 20);
+        jTCI.setBounds(350, 110, 120, 28);
         jPanel4.add(jTCelular);
-        jTCelular.setBounds(350, 190, 120, 20);
+        jTCelular.setBounds(350, 190, 120, 28);
 
         jLabel10.setText("Celular:");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(300, 200, 51, 14);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado"));
-
-        jRadioButton3.setText("ACTIVO");
-
-        jRadioButton4.setText("INACTIVO");
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jRadioButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton4)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton3)
-                    .addComponent(jRadioButton4))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel4.add(jPanel5);
-        jPanel5.setBounds(350, 220, 210, 50);
+        jLabel10.setBounds(300, 200, 51, 16);
 
         jLabel11.setText("Observación:");
         jPanel4.add(jLabel11);
-        jLabel11.setBounds(60, 310, 80, 14);
+        jLabel11.setBounds(60, 310, 80, 16);
 
         jTAObservacion.setColumns(20);
         jTAObservacion.setRows(5);
@@ -316,7 +284,7 @@ public class Proveedores extends javax.swing.JFrame {
         });
         jPanel2.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 75, -1));
 
-        jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
+        jTabNuevoModificar.addTab("Nuevo / Modificar", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,87 +292,116 @@ public class Proveedores extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(27, Short.MAX_VALUE)
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabNuevoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 882, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(312, 312, 312))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(jTabbedPane4)
+                .addComponent(jTabNuevoModificar)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRBDescripcion3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBDescripcion3ActionPerformed
+    private void jRBRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBRucActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRBDescripcion3ActionPerformed
+    }//GEN-LAST:event_jRBRucActionPerformed
+
+    private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
+        int fila = jTProveedores.getSelectedRow();
+
+        if (fila>=0){
+
+            jTIDProveedor.setText(this.jTProveedores.getValueAt(fila, 0).toString());
+            jTNombreRazonSocial.setText(this.jTProveedores.getValueAt(fila, 1).toString());
+            jTRuc.setText(this.jTProveedores.getValueAt(fila, 2).toString());
+            jTCI.setText(this.jTProveedores.getValueAt(fila, 3).toString());
+            jTDireccion.setText(this.jTProveedores.getValueAt(fila, 5).toString());
+            jTTelefono.setText(this.jTProveedores.getValueAt(fila, 6).toString());
+            jTCelular.setText(this.jTProveedores.getValueAt(fila, 7).toString());
+            jTEmail.setText(this.jTProveedores.getValueAt(fila, 8).toString());
+            jTAObservacion.setText(this.jTProveedores.getValueAt(fila, 9).toString());
+            
+
+            //    jCCategoria.setSelectedItem(this.jTProducto.getValueAt(fila, 3).toString());
+            jTabNuevoModificar.setSelectedIndex(1);
+            jBGuardar.setEnabled(false);
+            jBNuevo.setEnabled(false);
+            jBCancelar.setEnabled(true);
+            jBModificar.setEnabled(true);
+            habilitar();
+            
+            jTIDProveedor.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun proveedor para modificar");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar1ActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        DProveedor datos = new DProveedor();
+        FProveedor funcion = new FProveedor();
+        int fila = jTProveedores.getSelectedRow();
+
+        if (fila>=0){
+
+            datos.setIdProveedor(Integer.valueOf(this.jTProveedores.getValueAt(fila, 0).toString()));
+            if (funcion.eliminar(datos)){
+                JOptionPane.showMessageDialog(null, "Proveedor eliminado correctamente");
+                buscar();
+            }else{
+                JOptionPane.showMessageDialog(null, "Proveedor no eliminado");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun proveedor para modificar");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
 this.dispose();        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-if(jTCodigoBarras.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Código de Barras");
-            jTCodigoBarras.requestFocus();
+if(jTNombreRazonSocial.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe la Razón Socials");
         }else
-        if (jTNombre.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Nombre");
-            jTNombre.requestFocus();
+        if (jTRuc.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el RUC");
         }else
-        if (jTDescripcion.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Descripción");
-            jTDescripcion.requestFocus();
-        }else
-        if (jCFechaVencimiento.getDateFormatString().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe  ingresar la Fecha de Vencimiento");
-            jCFechaVencimiento.requestFocus();
-        }else
-        if (jTPrecioVenta.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
-            jTPrecioVenta.requestFocus();
+        if (jTTelefono.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un Telefono");
         }else {
             
             try {
                 
             
-    DProducto datos = new DProducto();
-    FProducto funcion = new FProducto();
-    FileInputStream archivofoto;
-    //Aca inicio la variable cal tipo calendario para poder obtener la fecha
-    Calendar cal;
-    int d,m,a;
-    cal = jCFechaVencimiento.getCalendar();
-    d = cal.get(Calendar.DAY_OF_MONTH);
-    m = cal.get(Calendar.MONTH);
-    a = cal.get(Calendar.YEAR) - 1900;
+    DProveedor datos = new DProveedor();
+    FProveedor funcion = new FProveedor();
+
     
     
-    //Hasta aca termina la obtencion de la fecha
+    datos.setIdProveedor(Integer.valueOf(jTIDProveedor.getText()));
+    datos.setNombreProveedor(jTNombreRazonSocial.getText());
+    datos.setRuc(jTRuc.getText());
+    datos.setCI(Integer.valueOf(jTCI.getText()));
+    datos.setDireccion(jTDireccion.getText());
+    datos.setTelefono(Integer.valueOf(jTTelefono.getText()));
+    datos.setCelular(Integer.valueOf(jTCelular.getText()));
+    datos.setEmail(jTEmail.getText());
+    datos.setObsevacion(jTAObservacion.getText());
     
-    datos.setCodigo(Integer.valueOf(jTCodigoBarras.getText()));
-    datos.setNombre(jTNombre.getText());
-    datos.setDescripcion(jTDescripcion.getText());
-    datos.setSitio(jTSitio.getText());
-    datos.setLimite(Double.valueOf(jTLimite.getText()));
-    datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
-    datos.setCategoria(jCCategoria.getSelectedItem().toString());
-    archivofoto = new FileInputStream(jTImagen.getText());
-    datos.setImagen(archivofoto);
-//    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
-    
-    datos.setVencimiento(new Date(a,m,d));
+   
     desabilitar();
     if (funcion.insertar(datos)){
-        JOptionPane.showMessageDialog(null, "Producto registrado correctamente");
+        JOptionPane.showMessageDialog(null, "Proveedor registrado correctamente");
     }else{
-        JOptionPane.showMessageDialog(null, "Producto no ingresado");
+        JOptionPane.showMessageDialog(null, "Proveedor no ingresado");
     }
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);
+        
             }
     }        // TODO add your handling code here:
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -416,68 +413,51 @@ habilitar();
         jBModificar.setEnabled(false);
         jBCancelar.setEnabled(true);
         jBNuevo.setEnabled(false);
-        jTCodigoBarras.requestFocus();        // TODO add your handling code here:
+        jTNombreRazonSocial.requestFocus();        // TODO add your handling code here:
     }//GEN-LAST:event_jBNuevoActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-if(jTCodigoBarras.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Código de Barras");
+if(jTNombreRazonSocial.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe la Razón Socials");
         }else
-        if (jTNombre.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Nombre");
+        if (jTRuc.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar el RUC");
         }else
-        if (jTDescripcion.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar Descripción");
-        }else
-        if (jCFechaVencimiento.getDateFormatString().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe  ingresar la Fecha de Vencimiento");
-        }else
-        if (jTPrecioVenta.getText().length() == 0){
-            JOptionPane.showMessageDialog(null, "Debe ingresar el Precio de Venta");
+        if (jTTelefono.getText().length() == 0){
+            JOptionPane.showMessageDialog(null, "Debe ingresar un Telefono");
         }else {
             
             try {
                 
           
-    DProducto datos = new DProducto();
-    FProducto funcion = new FProducto();
-    FileInputStream archivofoto;
-    //Aca inicio la variable cal tipo calendario para poder obtener la fecha
-    Calendar cal;
-    int d,m,a;
-    cal = jCFechaVencimiento.getCalendar();
-    d = cal.get(Calendar.DAY_OF_MONTH);
-    m = cal.get(Calendar.MONTH);
-    a = cal.get(Calendar.YEAR) - 1900;
+    DProveedor datos = new DProveedor();
+    FProveedor funcion = new FProveedor();
+
+   
     
-    
-    //Hasta aca termina la obtencion de la fecha
-    
-    datos.setCodigo(Integer.valueOf(jTCodigoBarras.getText()));
-    datos.setNombre(jTNombre.getText());
-    datos.setDescripcion(jTDescripcion.getText());
-    datos.setSitio(jTSitio.getText());
-    datos.setLimite(Double.valueOf(jTLimite.getText()));
-    datos.setPrecio(Double.valueOf(jTPrecioVenta.getText()));
-    datos.setCategoria(jCCategoria.getSelectedItem().toString());
-     archivofoto = new FileInputStream(jTImagen.getText());
-     if (jTImagen.getText().length() > 0){
-       datos.setImagen(archivofoto);  
-     }
+    datos.setIdProveedor(Integer.valueOf(jTIDProveedor.getText()));
+    datos.setNombreProveedor(jTNombreRazonSocial.getText());
+    datos.setRuc(jTRuc.getText());
+    datos.setCI(Integer.valueOf(jTCI.getText()));
+    datos.setDireccion(jTDireccion.getText());
+    datos.setTelefono(Integer.valueOf(jTTelefono.getText()));
+    datos.setCelular(Integer.valueOf(jTCelular.getText()));
+    datos.setEmail(jTEmail.getText());
+    datos.setObsevacion(jTAObservacion.getText());
      
-//    datos.setPrecioCosto(Double.valueOf(jTPrecioCosto.getText()));
     
-    datos.setVencimiento(new Date(a,m,d));
+     
+
     desabilitar();
     if (funcion.modificar(datos)){
-        JOptionPane.showMessageDialog(null, "Producto modifcado correctamente");
+        JOptionPane.showMessageDialog(null, "Proveedor modifcado correctamente");
         jBModificar.setEnabled(false);
         jBNuevo.setEnabled(true);
         jBCancelar.setEnabled(false);
         buscar();
         limpiar();
     }else{
-        JOptionPane.showMessageDialog(null, "Producto no modificado");
+        JOptionPane.showMessageDialog(null, "Proveedor no modificado");
     }
     }   catch (Exception e) {
         JOptionPane.showMessageDialog(null, e);
@@ -493,98 +473,73 @@ if(jTCodigoBarras.getText().length() == 0){
         jBModificar.setEnabled(false);
         desabilitar();        // TODO add your handling code here:
     }//GEN-LAST:event_jBCancelarActionPerformed
-
-    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
-        DProducto datos = new DProducto();
-        FProducto funcion = new FProducto();
-        int fila = jTProducto.getSelectedRow();
-
-        if (fila>=0){
-
-            datos.setCodigo(Integer.valueOf(this.jTProducto.getValueAt(fila, 0).toString()));
-            if (funcion.eliminar(datos)){
-                JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
-                buscar();
-            }else{
-                JOptionPane.showMessageDialog(null, "Producto no eliminado");
-            }
-        }else{
-            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun producto para modificar");
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_jBEliminarActionPerformed
 public void limpiar(){
-        jTCodigoBarras.setText("");
-        jTNombre.setText("");
-        jTDescripcion.setText("");
-        jTLimite.setText("");
-        jTPrecioVenta.setText("");
-        jTSitio.setText("");
+        jTIDProveedor.setText("");
+        jTNombreRazonSocial.setText("");
+        jTRuc.setText("");
+        jTCI.setText("");
+        jTDireccion.setText("");
+        jTTelefono.setText("");
+        jTCelular.setText("");
+        jTEmail.setText("");
+        jTAObservacion.setText("");
 //        jCFechaVencimiento.setCalendar(000);
     }
     public void cambiarBusqueda(){
          DProducto datos = new DProducto();
     FProducto funcion = new FProducto();
     
-        if (jRBCodigoBarras.isSelected()){
-            datos.setcambiarBusqueda("CodigoMedicamentos");
+        if (jRBIdProveedor.isSelected()){
+            datos.setcambiarBusqueda("CodigoProveedor");
             
-        }else if (jRBNombre.isSelected()){
-            datos.setcambiarBusqueda("Nombre");
-        }else if (jRBDescripcion.isSelected()) {
-            datos.setcambiarBusqueda("Descripcion");
-        }else if (jRBCategoria.isSelected()){
-            datos.setcambiarBusqueda("Categoria");
+        }else if (jRBNombreRazonSocial.isSelected()){
+            datos.setcambiarBusqueda("NombreProveedor");
+        }else if (jRBRuc.isSelected()) {
+            datos.setcambiarBusqueda("RUC");
+        }else if (jRBCI.isSelected()){
+            datos.setcambiarBusqueda("CI");
         }
     }
     public void buscar(){
    
     //llamo las funciones y datos aca para poder enviar y recibir datos    
-    DProducto datos = new DProducto();
-    FProducto funcion = new FProducto();
+    DProveedor datos = new DProveedor();
+    FProveedor funcion = new FProveedor();
     
     //Aca hago seleccionar el tipo de busqueda por el cual quiere hacer el usuario 
-        if (jRBCodigoBarras.isSelected()){
-            datos.setcambiarBusqueda("CodigoMedicamentos");
+        if (jRBIdProveedor.isSelected()){
+            datos.setCambiarBusqueda("CodigoProveedor");
             
-        }else if (jRBNombre.isSelected()){
-            datos.setcambiarBusqueda("Nombre");
-        }else if (jRBDescripcion.isSelected()) {
-            datos.setcambiarBusqueda("Descripcion");
-        }else if (jRBCategoria.isSelected()){
-            datos.setcambiarBusqueda("Categoria");
+        }else if (jRBNombreRazonSocial.isSelected()){
+            datos.setCambiarBusqueda("NombreProveedor");
+        }else if (jRBRuc.isSelected()) {
+            datos.setCambiarBusqueda("RUC");
+        }else if (jRBCI.isSelected()){
+            datos.setCambiarBusqueda("CI");
         }
         
         // En esta parte le envio a la funcion mostrar los datos que he obtenido para asi obtener mi búsqueda
         try {
             DefaultTableModel modelo;
-            FProducto func = new FProducto();
+            FProveedor func = new FProveedor();
             modelo = func.mostrar(jTBuscar.getText(), datos);
-            jTProducto.setModel(modelo);
+            jTProveedores.setModel(modelo);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    public void llenarCategoria(){
-         try {
-              DefaultComboBoxModel modelo;
-            FProducto func = new FProducto();
-            modelo = func.mostrarCategoria();
-            jCCategoria.setModel(modelo);
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }
+   
     public void desabilitar(){
-        jTCodigoBarras.setEnabled(false);
-        jTNombre.setEnabled(false);
-        jTDescripcion.setEnabled(false);
-        jTLimite.setEnabled(false);
-        jTPrecioVenta.setEnabled(false);
-        jTSitio.setEnabled(false);
-        jCFechaVencimiento.setEnabled(false);
-        jCCategoria.setEnabled(false);
+        jTNombreRazonSocial.setEnabled(false);
+        jTIDProveedor.setEnabled(false);
+        jTRuc.setEnabled(false);
+        jTCI.setEnabled(false);
+        jTDireccion.setEnabled(false);
+        jTTelefono.setEnabled(false);
+        jTCelular.setEnabled(false);
+        jTEmail.setEnabled(false);
+        jTAObservacion.setEnabled(false);
     }
     public void habilitar(){
         jTNombreRazonSocial.setEnabled(true);
@@ -638,7 +593,7 @@ public void limpiar(){
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jBModificar5;
+    private javax.swing.JButton jBModificar1;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBReporte;
     private javax.swing.JButton jBSalir;
@@ -655,16 +610,14 @@ public void limpiar(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JRadioButton jRBDescripcion1;
-    private javax.swing.JRadioButton jRBDescripcion2;
-    private javax.swing.JRadioButton jRBDescripcion3;
-    private javax.swing.JRadioButton jRBTipoUsuario;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRBCI;
+    private javax.swing.JRadioButton jRBIdProveedor;
+    private javax.swing.JRadioButton jRBNombreRazonSocial;
+    private javax.swing.JRadioButton jRBRuc;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTAObservacion;
+    private javax.swing.JTextField jTBuscar;
     private javax.swing.JTextField jTCI;
     private javax.swing.JTextField jTCelular;
     private javax.swing.JTextField jTDireccion;
@@ -674,7 +627,6 @@ public void limpiar(){
     private javax.swing.JTable jTProveedores;
     private javax.swing.JTextField jTRuc;
     private javax.swing.JTextField jTTelefono;
-    private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTabbedPane jTabNuevoModificar;
     // End of variables declaration//GEN-END:variables
 }
