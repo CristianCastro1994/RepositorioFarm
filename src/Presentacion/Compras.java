@@ -106,7 +106,7 @@ public class Compras extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 102));
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 153));
+        jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la compra"));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
@@ -172,7 +172,7 @@ public class Compras extends javax.swing.JFrame {
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 255, 153));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Producto"));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
@@ -249,7 +249,7 @@ public class Compras extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
-        jPanel3.setBackground(new java.awt.Color(102, 255, 153));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -374,12 +374,11 @@ public class Compras extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                             .addComponent(jTextField10)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -387,7 +386,7 @@ public class Compras extends javax.swing.JFrame {
                             .addComponent(jLabel21)
                             .addComponent(jLabel17))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)))
+                        .addComponent(jTextField13, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -475,17 +474,12 @@ public class Compras extends javax.swing.JFrame {
     private javax.swing.JButton jBGuardar2;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBNuevo;
-    private javax.swing.JButton jBNuevo1;
     private javax.swing.JButton jBSalir;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -498,19 +492,14 @@ public class Compras extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
     private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField14;
-    private javax.swing.JTextField jTextField16;
-    private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
