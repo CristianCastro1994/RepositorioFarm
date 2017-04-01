@@ -9,6 +9,7 @@ import Datos.DProducto;
 import Datos.DProveedor;
 import Funciones.FProducto;
 import Funciones.FProveedor;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -89,10 +90,23 @@ public class Proveedores extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Críterios de Búsqueda"));
         jPanel3.setForeground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTBuscarKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTBuscarKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTBuscarKeyTyped(evt);
+            }
+        });
         jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 470, -1));
 
         jRBIdProveedor.setBackground(new java.awt.Color(204, 255, 204));
         btngroupProveedor.add(jRBIdProveedor);
+        jRBIdProveedor.setSelected(true);
         jRBIdProveedor.setText("ID Proveedor");
         jPanel3.add(jRBIdProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, -1));
 
@@ -133,6 +147,11 @@ public class Proveedores extends javax.swing.JFrame {
                 "ID", "Nombre o Razón Social", "RUC", "C.I.", "Dirección"
             }
         ));
+        jTProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTProveedoresMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTProveedores);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 630, 180));
@@ -319,11 +338,11 @@ public class Proveedores extends javax.swing.JFrame {
             jTNombreRazonSocial.setText(this.jTProveedores.getValueAt(fila, 1).toString());
             jTRuc.setText(this.jTProveedores.getValueAt(fila, 2).toString());
             jTCI.setText(this.jTProveedores.getValueAt(fila, 3).toString());
-            jTDireccion.setText(this.jTProveedores.getValueAt(fila, 5).toString());
-            jTTelefono.setText(this.jTProveedores.getValueAt(fila, 6).toString());
-            jTCelular.setText(this.jTProveedores.getValueAt(fila, 7).toString());
-            jTEmail.setText(this.jTProveedores.getValueAt(fila, 8).toString());
-            jTAObservacion.setText(this.jTProveedores.getValueAt(fila, 9).toString());
+            jTDireccion.setText(this.jTProveedores.getValueAt(fila, 4).toString());
+            jTTelefono.setText(this.jTProveedores.getValueAt(fila, 5).toString());
+            jTCelular.setText(this.jTProveedores.getValueAt(fila, 6).toString());
+            jTEmail.setText(this.jTProveedores.getValueAt(fila, 7).toString());
+            jTAObservacion.setText(this.jTProveedores.getValueAt(fila, 8).toString());
             
 
             //    jCCategoria.setSelectedItem(this.jTProducto.getValueAt(fila, 3).toString());
@@ -383,7 +402,7 @@ if(jTNombreRazonSocial.getText().length() == 0){
 
     
     
-    datos.setIdProveedor(Integer.valueOf(jTIDProveedor.getText()));
+    
     datos.setNombreProveedor(jTNombreRazonSocial.getText());
     datos.setRuc(jTRuc.getText());
     datos.setCI(Integer.valueOf(jTCI.getText()));
@@ -400,8 +419,8 @@ if(jTNombreRazonSocial.getText().length() == 0){
     }else{
         JOptionPane.showMessageDialog(null, "Proveedor no ingresado");
     }
-    } catch (Exception e) {
-        
+    } catch (HeadlessException | NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, e);
             }
     }        // TODO add your handling code here:
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -473,6 +492,22 @@ if(jTNombreRazonSocial.getText().length() == 0){
         jBModificar.setEnabled(false);
         desabilitar();        // TODO add your handling code here:
     }//GEN-LAST:event_jBCancelarActionPerformed
+
+    private void jTBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarKeyTyped
+
+    private void jTBuscarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarKeyPressed
+
+    private void jTBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTBuscarKeyReleased
+buscar();        // TODO add your handling code here:
+    }//GEN-LAST:event_jTBuscarKeyReleased
+
+    private void jTProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProveedoresMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTProveedoresMouseClicked
 public void limpiar(){
         jTIDProveedor.setText("");
         jTNombreRazonSocial.setText("");
@@ -486,18 +521,18 @@ public void limpiar(){
 //        jCFechaVencimiento.setCalendar(000);
     }
     public void cambiarBusqueda(){
-         DProducto datos = new DProducto();
-    FProducto funcion = new FProducto();
+         DProveedor datos = new DProveedor();
+    FProveedor funcion = new FProveedor();
     
         if (jRBIdProveedor.isSelected()){
-            datos.setcambiarBusqueda("CodigoProveedor");
+            datos.setCambiarBusqueda("CodigoProveedor");
             
         }else if (jRBNombreRazonSocial.isSelected()){
-            datos.setcambiarBusqueda("NombreProveedor");
+            datos.setCambiarBusqueda("NombreProveedor");
         }else if (jRBRuc.isSelected()) {
-            datos.setcambiarBusqueda("RUC");
+            datos.setCambiarBusqueda("RUC");
         }else if (jRBCI.isSelected()){
-            datos.setcambiarBusqueda("CI");
+            datos.setCambiarBusqueda("CI");
         }
     }
     public void buscar(){

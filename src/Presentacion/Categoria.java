@@ -5,6 +5,14 @@
  */
 package Presentacion;
 
+import Datos.DCategoria;
+import Datos.DProducto;
+import Funciones.FCategoria;
+import Funciones.FProducto;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Richard
@@ -16,6 +24,48 @@ public class Categoria extends javax.swing.JFrame {
      */
     public Categoria() {
         initComponents();
+    }
+    
+      public void limpiar(){
+        jTIDCategoria.setText("");
+        jTDescripcion.setText("");
+        
+//        jCFechaVencimiento.setCalendar(000);
+    }
+    
+    public void buscar(){
+   
+    //llamo las funciones y datos aca para poder enviar y recibir datos    
+        DCategoria datos = new DCategoria();
+        FCategoria funcion = new FCategoria();
+    
+    //Aca hago seleccionar el tipo de busqueda por el cual quiere hacer el usuario 
+        if (jRBIDCategoria.isSelected()){
+            datos.setCambiarBusqueda("CodigoMedicamentos");
+            
+        }else if (jRBDescripcion.isSelected()){
+            datos.setCambiarBusqueda("Nombre");
+        }
+        // En esta parte le envio a la funcion mostrar los datos que he obtenido para asi obtener mi búsqueda
+        try {
+            DefaultTableModel modelo;
+            FCategoria func = new FCategoria();
+            modelo = func.mostrar(jTBuscar.getText(), datos);
+            jTCategorias.setModel(modelo);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public void desabilitar(){
+        jTIDCategoria.setEnabled(false);
+        jTDescripcion.setEnabled(false);
+        
+    }
+    public void habilitar(){
+        jTDescripcion.setEnabled(true);
+        
     }
 
     /**
@@ -31,17 +81,17 @@ public class Categoria extends javax.swing.JFrame {
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jRBTipoUsuario = new javax.swing.JRadioButton();
-        jRBDescripcion1 = new javax.swing.JRadioButton();
+        jTBuscar = new javax.swing.JTextField();
+        jRBIDCategoria = new javax.swing.JRadioButton();
+        jRBDescripcion = new javax.swing.JRadioButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTCategorias = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTIDCategoria = new javax.swing.JTextField();
+        jTDescripcion = new javax.swing.JTextField();
         jBNuevo1 = new javax.swing.JButton();
         jBGuardar1 = new javax.swing.JButton();
         jBModificar1 = new javax.swing.JButton();
@@ -58,22 +108,22 @@ public class Categoria extends javax.swing.JFrame {
         jPanel3.setForeground(new java.awt.Color(153, 204, 0));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setToolTipText("Ingrese aquí");
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 580, -1));
+        jTBuscar.setToolTipText("Ingrese aquí");
+        jPanel3.add(jTBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 580, -1));
 
-        jRBTipoUsuario.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupCategoria.add(jRBTipoUsuario);
-        jRBTipoUsuario.setText("ID Categoria");
-        jPanel3.add(jRBTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
+        jRBIDCategoria.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupCategoria.add(jRBIDCategoria);
+        jRBIDCategoria.setText("ID Categoria");
+        jPanel3.add(jRBIDCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 132, -1));
 
-        jRBDescripcion1.setBackground(new java.awt.Color(204, 255, 204));
-        btngroupCategoria.add(jRBDescripcion1);
-        jRBDescripcion1.setText("Descripción");
-        jPanel3.add(jRBDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 111, -1));
+        jRBDescripcion.setBackground(new java.awt.Color(204, 255, 204));
+        btngroupCategoria.add(jRBDescripcion);
+        jRBDescripcion.setText("Descripción");
+        jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 111, -1));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 630, 100));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -84,7 +134,7 @@ public class Categoria extends javax.swing.JFrame {
                 "ID", "Descripción"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTCategorias);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 630, 180));
 
@@ -97,15 +147,15 @@ public class Categoria extends javax.swing.JFrame {
 
         jLabel1.setText("ID Categoria:");
         jPanel4.add(jLabel1);
-        jLabel1.setBounds(28, 30, 65, 14);
+        jLabel1.setBounds(28, 30, 72, 16);
 
         jLabel2.setText("Descripción:");
         jPanel4.add(jLabel2);
-        jLabel2.setBounds(28, 68, 58, 14);
-        jPanel4.add(jTextField2);
-        jTextField2.setBounds(105, 27, 117, 20);
-        jPanel4.add(jTextField3);
-        jTextField3.setBounds(105, 65, 290, 20);
+        jLabel2.setBounds(28, 68, 69, 16);
+        jPanel4.add(jTIDCategoria);
+        jTIDCategoria.setBounds(105, 27, 117, 28);
+        jPanel4.add(jTDescripcion);
+        jTDescripcion.setBounds(105, 65, 290, 28);
 
         jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 630, 120));
 
@@ -154,7 +204,7 @@ public class Categoria extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jBCancelar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBModificar1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(jBNuevo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBGuardar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBSalir1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,13 +282,13 @@ public class Categoria extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRBDescripcion1;
-    private javax.swing.JRadioButton jRBTipoUsuario;
+    private javax.swing.JRadioButton jRBDescripcion;
+    private javax.swing.JRadioButton jRBIDCategoria;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTBuscar;
+    private javax.swing.JTable jTCategorias;
+    private javax.swing.JTextField jTDescripcion;
+    private javax.swing.JTextField jTIDCategoria;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

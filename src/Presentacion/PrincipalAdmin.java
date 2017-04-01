@@ -63,7 +63,6 @@ boolean controlVenta = false;
         jTNombre = new javax.swing.JTextField();
         jBCliente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jTClave = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -71,9 +70,6 @@ boolean controlVenta = false;
         jScrollPane2 = new javax.swing.JScrollPane();
         jTDetalleVenta = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -131,7 +127,7 @@ boolean controlVenta = false;
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("SISTEMA DE FARMACIA");
 
         jBEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/archivo-icono-5812-32.png"))); // NOI18N
@@ -185,9 +181,6 @@ boolean controlVenta = false;
         jLabel4.setText("Fecha");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1077, 12, -1, -1));
 
-        jLabel6.setText("Cotizacion");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 74, -1, -1));
-
         jTClave.setFont(new java.awt.Font("sansserif", 0, 36)); // NOI18N
         jTClave.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -199,8 +192,8 @@ boolean controlVenta = false;
         });
         jPanel2.add(jTClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(1005, 60, 261, 70));
 
-        jLabel8.setText("Clave");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(956, 113, -1, -1));
+        jLabel8.setText("Clave:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 90, -1, -1));
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/gnome-searchtool.png"))); // NOI18N
         jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1272, 52, -1, -1));
@@ -230,18 +223,6 @@ boolean controlVenta = false;
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1422, 523, -1, 37));
-
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/United States of America.png"))); // NOI18N
-        jLabel10.setText("Dolar");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 96, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Brazil.png"))); // NOI18N
-        jLabel11.setText("Real");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 118, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Argentina.png"))); // NOI18N
-        jLabel12.setText("Peso");
-        jPanel2.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(232, 140, -1, -1));
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1564, 523, -1, 35));
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(2069, 523, 48, 35));
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(2856, 523, -1, 35));
@@ -292,7 +273,7 @@ boolean controlVenta = false;
                 jBCotizacionActionPerformed(evt);
             }
         });
-        jPanel2.add(jBCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 89, -1, -1));
+        jPanel2.add(jBCotizacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, -1, 40));
 
         jCFechaVenta.setBackground(new java.awt.Color(36, 33, 33));
         jCFechaVenta.setForeground(new java.awt.Color(207, 207, 207));
@@ -302,14 +283,19 @@ boolean controlVenta = false;
         jPanel2.add(jCFechaVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(1157, 10, 152, 30));
 
         jCComprobante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ticket", "Factura", " " }));
-        jPanel2.add(jCComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(667, 52, 213, -1));
+        jCComprobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCComprobanteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jCComprobante, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 590, 30));
 
         jLabel19.setText("Comprobante:");
-        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(582, 57, -1, -1));
+        jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         jSCantidad.setFont(new java.awt.Font("sansserif", 0, 36)); // NOI18N
         jSCantidad.setValue(1);
-        jPanel2.add(jSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 90, 133, 50));
+        jPanel2.add(jSCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 90, 590, 50));
 
         jLImagen.setBackground(new java.awt.Color(204, 255, 204));
         jLImagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -622,6 +608,10 @@ if (jTNombre.getText().length() == 0){
 new Producto().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jBProductosActionPerformed
 
+    private void jCComprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCComprobanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCComprobanteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -674,9 +664,6 @@ new Producto().setVisible(true);        // TODO add your handling code here:
     private com.toedter.calendar.JDateChooser jCFechaVenta;
     private javax.swing.JLabel jLImagen;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -688,7 +675,6 @@ new Producto().setVisible(true);        // TODO add your handling code here:
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

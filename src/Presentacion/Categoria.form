@@ -34,7 +34,7 @@
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jBCancelar1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jBModificar1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jBModificar1" alignment="0" pref="78" max="32767" attributes="0"/>
                   <Component id="jBNuevo1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jBGuardar1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jBSalir1" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="jTBuscar">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value="Ingrese aqu&#xed;"/>
                   </Properties>
@@ -120,7 +120,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRBTipoUsuario">
+                <Component class="javax.swing.JRadioButton" name="jRBIDCategoria">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -136,7 +136,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRBDescripcion1">
+                <Component class="javax.swing.JRadioButton" name="jRBDescripcion">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="cc" green="ff" red="cc" type="rgb"/>
@@ -166,7 +166,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable2">
+                <Component class="javax.swing.JTable" name="jTCategorias">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="2" rowCount="4">
@@ -248,14 +248,14 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField2">
+                <Component class="javax.swing.JTextField" name="jTIDCategoria">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="105" y="27" width="117" height="-1"/>
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField3">
+                <Component class="javax.swing.JTextField" name="jTDescripcion">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="105" y="65" width="290" height="-1"/>
@@ -275,7 +275,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Nuevo"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-          <Color id="Cursor Padr&#xe3;o"/>
+          <Color id="Cursor Por defecto"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>

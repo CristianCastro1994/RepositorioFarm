@@ -90,6 +90,7 @@ DVenta datosVenta = new DVenta();
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos32/Argentina.png"))); // NOI18N
 
         GrupoMonedas.add(jRBGuarani);
+        jRBGuarani.setSelected(true);
         jRBGuarani.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jRBGuaraniFocusGained(evt);
@@ -196,9 +197,7 @@ DVenta datosVenta = new DVenta();
                             .addComponent(jLabel3)
                             .addComponent(jTTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(90, 90, 90)))))
+                            .addComponent(jLabel2))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -248,28 +247,37 @@ if (jTEfectivo.getText().length() != 0){
        
       if (jRBGuarani.isSelected()){
           datos.setCodigoMoneda(0);
-         
+        datos.setEfectivo(Double.valueOf(jTEfectivo.getText()));
+      if (func.calcularVuelto(datos)){
+        jTVuelto.setText(String.valueOf(formatea.format(func.mostrarVuelto())));
+      } 
       }
       
       if (jRBDolar.isSelected()){
           datos.setCodigoMoneda(1);
-          
+           datos.setEfectivo(Double.valueOf(jTEfectivo.getText()));
+      if (func.calcularVuelto(datos)){
+        jTVuelto.setText(String.valueOf(formatea.format(func.mostrarVuelto())));
+      } 
       }
       
       if(jRBPeso.isSelected()){
           datos.setCodigoMoneda(2);
-          
+          datos.setEfectivo(Double.valueOf(jTEfectivo.getText()));
+      if (func.calcularVuelto(datos)){
+        jTVuelto.setText(String.valueOf(formatea.format(func.mostrarVuelto())));
+      }  
       }
       
       if(jRBReal.isSelected()){
           datos.setCodigoMoneda(3);
-        
-      }
-      
-      datos.setEfectivo(Double.valueOf(jTEfectivo.getText()));
+         datos.setEfectivo(Double.valueOf(jTEfectivo.getText()));
       if (func.calcularVuelto(datos)){
         jTVuelto.setText(String.valueOf(formatea.format(func.mostrarVuelto())));
+      } 
       }
+      
+      
       
       
       

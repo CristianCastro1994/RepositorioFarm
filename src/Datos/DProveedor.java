@@ -10,20 +10,43 @@ package Datos;
  * @author Richard
  */
 public class DProveedor {
+    private int IdProveedor;
     private String NombreProveedor;
     private String RUC;
+    private int CI;
     private String Direccion;
     private int Telefono;
     private int Celular;
     private String Email;
-    private int NCuenta;
-    private int NCuenta2;
     private String Observacion;
+    private String CambiarBusqueda;
     
-    public DProveedor(String NombreProveedor, String RUC, String Direccion,
-    int Telefono, int Ceular, String Email, int NCuenta, int Ncuenta2, String Observacion){
+    public DProveedor(){
         
     }
+    
+    public DProveedor(int IdProveedor, String NombreProveedor, String RUC, int CI, String Direccion,
+    int Telefono, int Celular, String Email, String Observacion, String CambiarBusqueda){
+        this.IdProveedor = IdProveedor;
+        this.NombreProveedor = NombreProveedor;
+        this.RUC = RUC;
+        this.CI = CI;
+        this.Direccion = Direccion;
+        this.Telefono = Telefono;
+        this.Celular = Celular;
+        this.Email = Email;
+        this.Observacion = Observacion;
+        this.CambiarBusqueda = CambiarBusqueda;
+    }
+    
+    public int getIdProveedor(){
+        return IdProveedor;
+    }
+    
+    public void setIdProveedor(int IdProveedor){
+        this.IdProveedor = IdProveedor;
+    }
+    
     public String getNombreProveedor(){
         return NombreProveedor;
     }
@@ -38,6 +61,14 @@ public class DProveedor {
     
     public void setRuc(String RUC){
         this.RUC = RUC;
+    }
+    
+    public int getCI(){
+        return CI;
+    }
+    
+    public void setCI(int CI){
+        this.CI = CI;
     }
     
     public String getDireccion(){
@@ -72,21 +103,6 @@ public class DProveedor {
         this.Email = Email;
     }
     
-    public int getNCuenta(){
-        return NCuenta;
-    }
-    
-    public void setNcuenta(int NCuenta){
-        this.NCuenta = NCuenta;
-    }
-    
-    public int getNCuenta2(){
-        return NCuenta2;
-    }
-    
-    public void setNcuenta2(int Ncuenta2){
-        this.NCuenta2 = Ncuenta2;
-    }
     
     public String getObservacion(){
         return Observacion;
@@ -94,5 +110,13 @@ public class DProveedor {
     
     public void setObsevacion(String Observacion){
         this.Observacion = Observacion;
+    }
+    
+    public String getCambiarBusqueda(){
+        return CambiarBusqueda;
+    }
+    
+    public void setCambiarBusqueda(String CambiarBusqueda){
+        this.CambiarBusqueda = CambiarBusqueda;
     }
 }
