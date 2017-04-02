@@ -462,12 +462,12 @@ public class Compras extends javax.swing.JFrame {
 
     private void jBBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarProveedorActionPerformed
       
-        new BusquedaProveedor().setVisible(true); 
+        new BusquedaProv(this, true).setVisible(true); 
         // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarProveedorActionPerformed
 
     private void jBBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarProductoActionPerformed
-    new BusquedaProducto().setVisible(true);        // TODO add your handling code here:
+    new BusquedaProd(this, true).setVisible(true);      // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarProductoActionPerformed
 
     private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed

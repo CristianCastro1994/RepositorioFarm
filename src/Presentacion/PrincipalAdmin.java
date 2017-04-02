@@ -536,9 +536,8 @@ new CalculoVuelto().setVisible(true);        // TODO add your handling code here
     
     
     private void jBClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBClienteActionPerformed
-     BusquedaCliente form = new BusquedaCliente();
-        form.toFront();
-        form.setVisible(true);
+     new BusquedaCli(this, true).setVisible(true);
+        
     }//GEN-LAST:event_jBClienteActionPerformed
 
     
