@@ -308,13 +308,14 @@ public class Producto extends javax.swing.JFrame {
         jPanelProducto.add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 100, 50));
         jPanelProducto.add(jTImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 250, 280, -1));
 
+        jBAbrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-open.png"))); // NOI18N
         jBAbrir.setText("Abrir");
         jBAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAbrirActionPerformed(evt);
             }
         });
-        jPanelProducto.add(jBAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 70, 40));
+        jPanelProducto.add(jBAbrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 110, 70));
 
         jLImagen.setBackground(new java.awt.Color(255, 255, 255));
         jLImagen.setForeground(new java.awt.Color(255, 255, 255));
