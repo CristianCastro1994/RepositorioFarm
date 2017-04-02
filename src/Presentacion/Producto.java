@@ -82,7 +82,7 @@ public class Producto extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jTLimite = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jCCategoria = new javax.swing.JComboBox<>();
+        jCCategoria = new javax.swing.JComboBox<String>();
         jLabel16 = new javax.swing.JLabel();
         jTPrecioVenta = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
@@ -147,6 +147,7 @@ public class Producto extends javax.swing.JFrame {
         jRBDescripcion.setText("Descripción");
         jPanel3.add(jRBDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 150, -1));
 
+        jBReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/finder.png"))); // NOI18N
         jBReporte.setText("Reporte ");
         jBReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,12 +177,14 @@ public class Producto extends javax.swing.JFrame {
         ));
         jTProducto.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTProducto.setRowHeight(25);
-        jTProducto.setShowVerticalLines(true);
         jScrollPane2.setViewportView(jTProducto);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 870, 270));
 
+        jBModificar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
         jBModificar1.setText("Modificar");
+        jBModificar1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBModificar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBModificar1ActionPerformed(evt);
@@ -189,7 +192,10 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanel1.add(jBModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 100, 50));
 
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dialog-error.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
+        jBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
@@ -267,7 +273,10 @@ public class Producto extends javax.swing.JFrame {
 
         jPanelProducto.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 500, 410));
 
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-files-to-archive.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
+        jBNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBNuevoActionPerformed(evt);
@@ -275,7 +284,10 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanelProducto.add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 100, 50));
 
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/disk.png"))); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
@@ -283,7 +295,10 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanelProducto.add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 100, 100, 50));
 
+        jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
         jBModificar.setText("Modificar");
+        jBModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBModificarActionPerformed(evt);
@@ -291,7 +306,10 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanelProducto.add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 190, 100, 50));
 
+        jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancel.png"))); // NOI18N
         jBCancelar.setText("Cancelar");
+        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCancelarActionPerformed(evt);
@@ -299,7 +317,10 @@ public class Producto extends javax.swing.JFrame {
         });
         jPanelProducto.add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 280, 100, 50));
 
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/application-exit.png"))); // NOI18N
         jBSalir.setText("Salir");
+        jBSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSalirActionPerformed(evt);

@@ -253,20 +253,35 @@ public class RegistroTipoUsuario extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 45, -1, -1));
 
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-files-to-archive.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
-        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 71, 70, -1));
+        jBNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jBNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 70, -1));
 
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/disk.png"))); // NOI18N
         jBGuardar.setText("Guardar");
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 112, -1, -1));
+        jBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, -1, -1));
 
+        jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
         jBModificar.setText("Modificar");
-        getContentPane().add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 153, 80, -1));
+        jBModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jBModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 190, 70, -1));
 
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/exit.png"))); // NOI18N
         jBSalir.setText("Salir");
-        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 240, 70, -1));
+        jBSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 330, 70, -1));
 
+        jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancel.png"))); // NOI18N
         jBCancelar.setText("Cancelar");
-        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(804, 194, -1, -1));
+        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jBCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, 70, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

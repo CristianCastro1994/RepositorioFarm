@@ -107,6 +107,7 @@ public class Empleado extends javax.swing.JFrame {
         jRBDescripcion1.setText("Descripción");
         jPanel3.add(jRBDescripcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 111, -1));
 
+        jBReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/finder.png"))); // NOI18N
         jBReporte.setText("Reporte ");
         jPanel3.add(jBReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, -1, -1));
 
@@ -272,20 +273,35 @@ public class Empleado extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Nuevo / Modificar", jPanel2);
 
+        jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-files-to-archive.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
+        jBNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/disk.png"))); // NOI18N
         jBGuardar.setText("Guardar");
+        jBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBGuardarActionPerformed(evt);
             }
         });
 
+        jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
         jBModificar.setText("Modificar");
+        jBModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/exit.png"))); // NOI18N
         jBSalir.setText("Salir");
+        jBSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancel.png"))); // NOI18N
         jBCancelar.setText("Cancelar");
+        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -308,7 +324,7 @@ public class Empleado extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 99, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jBNuevo)
                 .addGap(18, 18, 18)
                 .addComponent(jBGuardar)
@@ -318,7 +334,7 @@ public class Empleado extends javax.swing.JFrame {
                 .addComponent(jBCancelar)
                 .addGap(23, 23, 23)
                 .addComponent(jBSalir)
-                .addGap(0, 204, Short.MAX_VALUE))
+                .addGap(0, 112, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jTabbedPane4)

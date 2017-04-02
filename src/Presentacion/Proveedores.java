@@ -52,8 +52,8 @@ public class Proveedores extends javax.swing.JFrame {
         jBReporte = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTProveedores = new javax.swing.JTable();
-        jBModificar1 = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
+        jBModificar2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -156,21 +156,27 @@ public class Proveedores extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 630, 180));
 
-        jBModificar1.setText("Modificar");
-        jBModificar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBModificar1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jBModificar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 140, 100, 50));
-
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dialog-error.png"))); // NOI18N
         jBEliminar.setText("Eliminar");
+        jBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEliminarActionPerformed(evt);
             }
         });
         jPanel1.add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 210, 100, 50));
+
+        jBModificar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
+        jBModificar2.setText("Modificar");
+        jBModificar2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBModificar2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBModificar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBModificar2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBModificar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 100, 50));
 
         jTabNuevoModificar.addTab("Buscar", jPanel1);
 
@@ -181,55 +187,55 @@ public class Proveedores extends javax.swing.JFrame {
 
         jLabel1.setText("ID Proveedor:");
         jPanel4.add(jLabel1);
-        jLabel1.setBounds(28, 30, 74, 16);
+        jLabel1.setBounds(28, 30, 68, 14);
         jPanel4.add(jTIDProveedor);
-        jTIDProveedor.setBounds(120, 30, 117, 28);
+        jTIDProveedor.setBounds(120, 30, 117, 20);
 
         jLabel3.setText("Nombre o Razón Social:");
         jPanel4.add(jLabel3);
-        jLabel3.setBounds(30, 70, 133, 16);
+        jLabel3.setBounds(30, 70, 113, 14);
         jPanel4.add(jTNombreRazonSocial);
-        jTNombreRazonSocial.setBounds(170, 70, 300, 28);
+        jTNombreRazonSocial.setBounds(170, 70, 300, 20);
 
         jLabel4.setText("R.U.C.:");
         jPanel4.add(jLabel4);
-        jLabel4.setBounds(120, 120, 39, 16);
+        jLabel4.setBounds(120, 120, 37, 14);
         jPanel4.add(jTRuc);
-        jTRuc.setBounds(170, 110, 120, 28);
+        jTRuc.setBounds(170, 110, 120, 20);
         jPanel4.add(jTDireccion);
-        jTDireccion.setBounds(170, 150, 300, 28);
+        jTDireccion.setBounds(170, 150, 300, 20);
 
         jLabel5.setText("Dirección:");
         jPanel4.add(jLabel5);
-        jLabel5.setBounds(110, 160, 55, 16);
+        jLabel5.setBounds(110, 160, 47, 14);
         jPanel4.add(jTTelefono);
-        jTTelefono.setBounds(170, 190, 120, 28);
+        jTTelefono.setBounds(170, 190, 120, 20);
 
         jLabel6.setText("Telefono:");
         jPanel4.add(jLabel6);
-        jLabel6.setBounds(110, 200, 51, 16);
+        jLabel6.setBounds(110, 200, 46, 14);
         jPanel4.add(jTEmail);
-        jTEmail.setBounds(170, 240, 170, 28);
+        jTEmail.setBounds(170, 240, 170, 20);
 
         jLabel7.setText("E-mail:");
         jPanel4.add(jLabel7);
-        jLabel7.setBounds(110, 240, 39, 16);
+        jLabel7.setBounds(110, 240, 32, 14);
 
         jLabel9.setText("C.I.:");
         jPanel4.add(jLabel9);
-        jLabel9.setBounds(310, 120, 39, 16);
+        jLabel9.setBounds(310, 120, 39, 14);
         jPanel4.add(jTCI);
-        jTCI.setBounds(350, 110, 120, 28);
+        jTCI.setBounds(350, 110, 120, 20);
         jPanel4.add(jTCelular);
-        jTCelular.setBounds(350, 190, 120, 28);
+        jTCelular.setBounds(350, 190, 120, 20);
 
         jLabel10.setText("Celular:");
         jPanel4.add(jLabel10);
-        jLabel10.setBounds(300, 200, 51, 16);
+        jLabel10.setBounds(300, 200, 51, 14);
 
         jLabel11.setText("Observación:");
         jPanel4.add(jLabel11);
-        jLabel11.setBounds(60, 310, 80, 16);
+        jLabel11.setBounds(60, 310, 80, 14);
 
         jTAObservacion.setColumns(20);
         jTAObservacion.setRows(5);
@@ -328,37 +334,6 @@ public class Proveedores extends javax.swing.JFrame {
     private void jRBRucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBRucActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRBRucActionPerformed
-
-    private void jBModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar1ActionPerformed
-        int fila = jTProveedores.getSelectedRow();
-
-        if (fila>=0){
-
-            jTIDProveedor.setText(this.jTProveedores.getValueAt(fila, 0).toString());
-            jTNombreRazonSocial.setText(this.jTProveedores.getValueAt(fila, 1).toString());
-            jTRuc.setText(this.jTProveedores.getValueAt(fila, 2).toString());
-            jTCI.setText(this.jTProveedores.getValueAt(fila, 3).toString());
-            jTDireccion.setText(this.jTProveedores.getValueAt(fila, 4).toString());
-            jTTelefono.setText(this.jTProveedores.getValueAt(fila, 5).toString());
-            jTCelular.setText(this.jTProveedores.getValueAt(fila, 6).toString());
-            jTEmail.setText(this.jTProveedores.getValueAt(fila, 7).toString());
-            jTAObservacion.setText(this.jTProveedores.getValueAt(fila, 8).toString());
-            
-
-            //    jCCategoria.setSelectedItem(this.jTProducto.getValueAt(fila, 3).toString());
-            jTabNuevoModificar.setSelectedIndex(1);
-            jBGuardar.setEnabled(false);
-            jBNuevo.setEnabled(false);
-            jBCancelar.setEnabled(true);
-            jBModificar.setEnabled(true);
-            habilitar();
-            
-            jTIDProveedor.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "No ha seleccionado ningun proveedor para modificar");
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBModificar1ActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         DProveedor datos = new DProveedor();
@@ -508,6 +483,10 @@ buscar();        // TODO add your handling code here:
     private void jTProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTProveedoresMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTProveedoresMouseClicked
+
+    private void jBModificar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBModificar2ActionPerformed
 public void limpiar(){
         jTIDProveedor.setText("");
         jTNombreRazonSocial.setText("");
@@ -628,7 +607,7 @@ public void limpiar(){
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
     private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jBModificar1;
+    private javax.swing.JButton jBModificar2;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBReporte;
     private javax.swing.JButton jBSalir;
