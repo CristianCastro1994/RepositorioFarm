@@ -5,6 +5,16 @@
  */
 package Presentacion;
 
+import Datos.DCompra;
+import Datos.DDetalleVenta;
+import Datos.DVenta;
+import Funciones.FDetalleCompra;
+import Funciones.FDetalleVenta;
+import Funciones.FVenta;
+import static Presentacion.PrincipalAdmin.jTNombre;
+import java.awt.Dialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Richard
@@ -29,9 +39,7 @@ public class Compras extends javax.swing.JFrame {
 
         btngroupProveedor = new javax.swing.ButtonGroup();
         jBNuevo = new javax.swing.JButton();
-        jBGuardar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
-        jBCancelar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -67,9 +75,13 @@ public class Compras extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jTextField13 = new javax.swing.JTextField();
+        jBAgregar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PROVEEDOR");
+        setFocusableWindowState(false);
+        setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 
         jBNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add-files-to-archive.png"))); // NOI18N
         jBNuevo.setText("Nuevo");
@@ -79,11 +91,11 @@ public class Compras extends javax.swing.JFrame {
         jBNuevo.setMaximumSize(new java.awt.Dimension(71, 59));
         jBNuevo.setMinimumSize(new java.awt.Dimension(71, 59));
         jBNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
-        jBGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/disk.png"))); // NOI18N
-        jBGuardar.setText("Guardar");
-        jBGuardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/document-edit.png"))); // NOI18N
         jBModificar.setText("Modificar");
@@ -92,12 +104,6 @@ public class Compras extends javax.swing.JFrame {
         jBModificar.setMinimumSize(new java.awt.Dimension(71, 59));
         jBModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dialog-cancel.png"))); // NOI18N
-        jBCancelar.setText("Cancelar");
-        jBCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBCancelar.setPreferredSize(new java.awt.Dimension(75, 59));
-        jBCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-
         jBSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/exit.png"))); // NOI18N
         jBSalir.setText("Salir");
         jBSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -105,6 +111,8 @@ public class Compras extends javax.swing.JFrame {
         jBSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 102));
+        jPanel8.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel8.setInheritsPopupMenu(true);
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos de la compra"));
@@ -332,6 +340,22 @@ public class Compras extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel21.setText("Total a Pagar");
 
+        jBAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/add.png"))); // NOI18N
+        jBAgregar.setText("Agregar");
+        jBAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAgregarActionPerformed(evt);
+            }
+        });
+
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/dialog-error.png"))); // NOI18N
+        jBEliminar.setText("Eliminar");
+        jBEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEliminar.setPreferredSize(new java.awt.Dimension(75, 59));
+        jBEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -346,7 +370,11 @@ public class Compras extends javax.swing.JFrame {
                                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jTCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(0, 303, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jBAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jBEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                .addGap(123, 123, 123))
                             .addComponent(jScrollPane2))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
@@ -375,7 +403,11 @@ public class Compras extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jBEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                        .addComponent(jBAgregar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,12 +433,10 @@ public class Compras extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBModificar, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(jBNuevo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jBGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
@@ -417,13 +447,9 @@ public class Compras extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(54, 54, 54)
-                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addGap(169, 169, 169)
                         .addComponent(jBModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(151, 151, 151)
                         .addComponent(jBSalir))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
@@ -435,12 +461,58 @@ public class Compras extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarProveedorActionPerformed
-    new BusquedaProveedor().setVisible(true);    // TODO add your handling code here:
+      
+        new BusquedaProveedor().setVisible(true); 
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarProveedorActionPerformed
 
     private void jBBuscarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarProductoActionPerformed
     new BusquedaProducto().setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jBBuscarProductoActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
+     
+
+
+
+         func = new FDetalleCompra();
+        DCompra datos = new DCompra();
+        
+        FDetalleVenta funcion = new FDetalleVenta();
+        DDetalleVenta datosDetalle = new DDetalleVenta();
+if (jTProveedor.getText().length() == 0){
+    
+    JOptionPane.showMessageDialog(null, "Registre primero el Proveedor");
+    jTNombre.requestFocus();
+    return;
+}
+
+        if (c == evt.VK_ENTER) {
+            if (controlVenta == false) {
+                datos.setComprobante(jCComprobante.getSelectedItem().toString());
+                if (func.insertarVenta(datos)){
+//                    JOptionPane.showMessageDialog(null, "La venta se ha creado");
+                    controlVenta = true;
+                }
+            }
+            
+            datosDetalle.setcantidadDetalle(Float.valueOf(jSCantidad.getValue().toString()));
+            datosDetalle.setcodigoProducto(Integer.valueOf(jTClave.getText()));
+            if (funcion.insertarDetalleVenta(datosDetalle)) {
+            jLImagen.setIcon(null);
+            jSCantidad.setValue(1);
+            cargarDetalle();
+            cargarImagen();
+            mostrarCalculo();
+            jTClave.setText("");
+            jTClave.requestFocus();
+            }
+        }   // TODO add your handling code here:
+    }//GEN-LAST:event_jBAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,10 +552,10 @@ public class Compras extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup btngroupProveedor;
+    private javax.swing.JButton jBAgregar;
     private javax.swing.JButton jBBuscarProducto;
     private javax.swing.JButton jBBuscarProveedor;
-    private javax.swing.JButton jBCancelar;
-    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBModificar;
     private javax.swing.JButton jBNuevo;
     private javax.swing.JButton jBSalir;
